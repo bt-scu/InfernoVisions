@@ -1,0 +1,13 @@
+# Python / FastAPI
+fast-api-app/venv/
+fast-api-app/__pycache__/
+fast-api-app/.env
+fast-api-app/*.pyc
+
+# React / Frontend
+react-app/node_modules/
+react-app/build/
+react-app/.env.local
+
+# OS
+.DS_Store
