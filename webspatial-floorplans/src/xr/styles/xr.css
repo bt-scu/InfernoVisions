@@ -62,22 +62,19 @@ html.is-spatial .right-sidebar {
   overflow: visible;
 }
 
-/* Board container lives in 2D flow but hosts spatial children */
+/* Board container - fixed size to match floor plan (960x720) for 1:1 coordinate mapping */
 .board {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 600px;
+  width: 960px;
+  height: 720px;
   overflow: visible;
-  background: url('/floor-plan.png') center center / contain no-repeat,
-    linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  background-color: #1a1a2e;
-  padding: 60px;
+  background: url('/floor-plan.png') 0 0 / 960px 720px no-repeat;
+  background-color: #0f0f0f;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 html.is-spatial .board {
   background-color: transparent;
-  /* Keep floor plan image in spatial mode */
 }
 
 /* Placement mode */
@@ -1866,17 +1863,21 @@ html.is-spatial .context-menu {
 
 /* ===== Multi-Window Scene Layouts ===== */
 
-/* Board Scene - Full screen canvas */
+/* Board Scene - centers the 960x720 floor plan board */
 .board-scene-container {
   width: 100%;
   height: 100vh;
-  overflow: visible;
+  overflow: auto;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .board-scene-container .board {
-  width: 100%;
-  height: 100%;
+  width: 960px;
+  height: 720px;
+  flex-shrink: 0;
 }
 
 /* Layers Scene - Standalone window */
