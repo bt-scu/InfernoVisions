@@ -1,15 +1,25 @@
+.firefighter-hub-scene {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .firefighter-hub {
   padding: 24px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  row-gap: 32px;
+  column-gap: 48px;
   border-radius: 24px;
   overflow: hidden;
+  justify-items: center;
+  align-items: center;
 }
 
 .firefighter-dot{
-  width: 40px;          
-  height: 40px;         
+  width: 60px;          
+  height: 60px;         
   border-radius: 50%;   
   flex-shrink: 0;
   margin-right: 10px;
