@@ -1,5 +1,9 @@
+import { initScene } from '@webspatial/react-sdk';
 import '../styles/firefighterhub.css';
 import '../styles/xr.css';
+
+
+
 
 const FIREFIGHTERS = [                                                                              
   { id: 'ff1', label: 'FF1', color: '#06b6d4' },                                                  
@@ -12,6 +16,7 @@ const FIREFIGHTERS = [
 
 export function FirefighterHubScene() {
   return (
+    <div className="firefighter-hub-scene">
     <div className="firefighter-hub">
       {FIREFIGHTERS.map((ff) => (
         <div key={ff.id} className="firefighter-item">
@@ -22,6 +27,7 @@ export function FirefighterHubScene() {
           <span className="firefighter-label">{ff.label}</span>
         </div>
       ))}
+    </div>
     </div>
   );
 }
