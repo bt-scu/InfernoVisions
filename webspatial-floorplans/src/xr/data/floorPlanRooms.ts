@@ -4,7 +4,7 @@
  * scaled from the source image dimensions to the display canvas.
  */
 
-import roomsData from './rooms.json';
+import roomsData from '../../../../fast-api-app/rooms.json';
 
 export const FLOOR_PLAN_WIDTH = 960;
 export const FLOOR_PLAN_HEIGHT = 720;
