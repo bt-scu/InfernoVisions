@@ -3011,10 +3011,17 @@ html.is-spatial .welcome-scene {
   flex-shrink: 0;
 }
 
-.welcome-dismiss-btn:hover {
+.welcome-dismiss-btn:hover,
+.welcome-dismiss-btn:focus {
   background: #B82424;
   color: white;
   transform: scale(1.02);
+}
+
+.welcome-dismiss-btn:active {
+  background: white;
+  color: #B82424;
+  transform: scale(0.98);
 }
 
 /* Clear Canvas Scene */
