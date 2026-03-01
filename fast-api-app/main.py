@@ -1,4 +1,8 @@
+from pathlib import Path
+import json
+
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from db.create_engine import engine
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -11,10 +15,28 @@ import traceback
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+ROOMS_JSON_PATH = Path(__file__).resolve().parent / "rooms.json"
+
 
 @app.get("/")
 def read_root():
     return {"message": "Hello World"}
+
+
+@app.get("/rooms")
+def get_rooms():
+    try:
+        data = json.loads(ROOMS_JSON_PATH.read_text())
+        return data
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="rooms.json not found")
 
 
 @app.get("/db-connect-test")

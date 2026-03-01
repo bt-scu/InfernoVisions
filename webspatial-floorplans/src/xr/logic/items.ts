@@ -406,15 +406,16 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
   }
 }
 
-import { FLOOR_PLAN_ROOMS, FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT } from '../data/floorPlanRooms';
+import { FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT } from '../data/floorPlanRooms';
+import { fetchFloorPlanRooms } from '../data/roomsService';
 
-// Initial state: rooms from floor plan config (positions/sizes match floor-plan.png)
-export function createDemoBoard(): Item[] {
-  return FLOOR_PLAN_ROOMS.map(def =>
+export async function createDemoBoard(): Promise<Item[]> {
+  const rooms = await fetchFloorPlanRooms();
+  return rooms.map(def =>
     createItem('room', { x: def.x, y: def.y }, {
       color: def.baseColor,
       name: def.label,
-      tags: def.id.startsWith('corridor') ? ['corridor'] : def.id === 'open' ? ['open'] : ['room'],
+      tags: ['room'],
       rot: 0,
       width: def.width,
       height: def.height,
