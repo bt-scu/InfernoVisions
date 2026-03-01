@@ -16,7 +16,7 @@ export function WelcomeScene() {
 
     initScene('keyScene', prevConfig => ({
       ...prevConfig,
-      defaultSize: { width: 400, height: 600 },
+      defaultSize: { width: 160, height: 120 },
     }));
     const keyUrl = new URL(window.location.href);
     keyUrl.searchParams.set('scene', 'key');
