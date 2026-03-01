@@ -8,6 +8,9 @@ import { ImportScene } from './xr/scenes/ImportScene';
 import { WelcomeScene } from './xr/scenes/WelcomeScene';
 import { ClearScene } from './xr/scenes/ClearScene';
 import { GridAlignScene } from './xr/scenes/GridAlignScene';
+import { FirefighterHubScene } from './xr/scenes/FirefighterHubScene';
+import { KeyScene } from './xr/scenes/KeyScene';
+
 
 function App() {
   // Determine which scene to render based on URL parameters
@@ -48,6 +51,14 @@ function App() {
 
   if (scene === 'grid-align') {
     return <GridAlignScene />;
+  }
+
+  if (scene === 'firefighter-hub') {
+    return <FirefighterHubScene />;
+  }
+
+  if (scene === 'key') {
+    return <KeyScene />;
   }
 
   if (scene === 'board') {

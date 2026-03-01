@@ -60,6 +60,6 @@ export const FLOOR_PLAN_ROOMS: RoomDef[] = [
   // { id: '125', label: '125', x: 573, y: 564, width: 95, height: 72, baseColor: '#ffffff' },
   // { id: '126', label: '126', x: 673, y: 408, width: 95, height: 72, baseColor: '#ffffff' },
   // { id: '127', label: '127', x: 673, y: 486, width: 95, height: 72, baseColor: '#ffffff' },
-  // { id: '128', label: '128', x: 673, y: 564, width: 95, height: 72, baseColor: '#ffffff' },
+  { id: '128', label: '128', x: 620, y: 413, width: 54, height: 26, baseColor: '#ffffff' },
   { id: '129', label: '129', x: 620, y: 387, width: 54, height: 26, baseColor: '#ffffff' },
 ];
