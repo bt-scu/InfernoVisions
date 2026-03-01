@@ -1,0 +1,26 @@
+{
+  "name": "Spatial Canvas",
+  "short_name": "SpatialCanvas",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "xr_main_scene": {
+    "default_size": {
+      "width": 1200,
+      "height": 900
+    }
+  }
+}
