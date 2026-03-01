@@ -1,0 +1,23 @@
+.firefighter-hub {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 2 equal columns */
+  gap: 10px;
+}
+
+.firefighter-dot{
+  width: 40px;          
+  height: 40px;         
+  border-radius: 50%;   
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.firefighter-item {
+  display: flex;        
+  align-items: center;   
+  gap: 12px;             
+  margin-bottom: 8px;   
+  padding-right: 10px;
+  padding-left: 10px;
+}
