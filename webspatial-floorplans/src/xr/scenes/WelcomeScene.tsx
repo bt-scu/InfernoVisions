@@ -12,7 +12,7 @@ export function WelcomeScene() {
   return (
     <div className="welcome-scene">
       <h2 className="welcome-title">Inferno Vision</h2>
-      <p className="welcome-subtitle">Open these panels from the toolbar to enhance your workspace:</p>
+      <p className="welcome-subtitle">Please choose from the buildings listed below:</p>
 
       <div className="welcome-panels">
         <div className="welcome-panel-item">
