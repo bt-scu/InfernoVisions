@@ -4,8 +4,8 @@ import circleCheck from '../../assets/Circle_Check.svg';
 import triangleWarning from '../../assets/Triangle_Warning.png';
 
 const KEYS = [
-  { id: 'k1', label: 'Hazard', color: '#85E175', icon: circleCheck },
-  { id: 'k2', label: 'Clear', color: '#F96464', icon: triangleWarning }
+  { id: 'k1', label: 'Clear', color: '#85E175', icon: circleCheck },
+  { id: 'k2', label: 'Hazard', color: '#F96464', icon: triangleWarning }
 ]; 
 
 export function KeyScene() {
