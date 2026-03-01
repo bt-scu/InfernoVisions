@@ -58,7 +58,7 @@ export function BoardScene() {
 
   // Placement mode state - for click-to-place new items
   const [placementMode, setPlacementMode] = useState<{
-    type: 'text' | 'swatch' | 'image';
+    type: 'text' | 'room' | 'image';
     data?: { color?: string; src?: string };
   } | null>(null);
 
@@ -349,8 +349,8 @@ export function BoardScene() {
     setPlacementMode({ type: 'text' });
   }, []);
 
-  const handleAddSwatch = useCallback((color: string) => {
-    setPlacementMode({ type: 'swatch', data: { color } });
+  const handleAddRoom = useCallback((color: string) => {
+    setPlacementMode({ type: 'room', data: { color } });
   }, []);
 
   const handleAddImage = useCallback((file: File) => {
@@ -369,8 +369,8 @@ export function BoardScene() {
     let item;
     if (placementMode.type === 'text') {
       item = createItem('text', { x, y }, { text: 'New text box' });
-    } else if (placementMode.type === 'swatch') {
-      item = createItem('swatch', { x, y }, { color: placementMode.data?.color });
+    } else if (placementMode.type === 'room') {
+      item = createItem('room', { x, y }, { color: placementMode.data?.color });
     } else if (placementMode.type === 'image') {
       item = createItem('image', { x, y }, { src: placementMode.data?.src });
     }
@@ -627,7 +627,7 @@ export function BoardScene() {
       {/* Toolbar with window opener buttons */}
       <Toolbar
         onAddText={handleAddText}
-        onAddSwatch={handleAddSwatch}
+        onAddRoom={handleAddRoom}
         onAddImage={handleAddImage}
         onAlignGrid={handleAlignGrid}
         onTogglePresent={handleTogglePresent}
@@ -654,7 +654,7 @@ export function BoardScene() {
         onClose={() => setIsCommandPaletteOpen(false)}
         dispatch={dispatch}
         onAddText={handleAddText}
-        onAddSwatch={handleAddSwatch}
+        onAddRoom={handleAddRoom}
         onAlignGrid={handleAlignGrid}
         onTogglePresent={handleTogglePresent}
         onExport={handleExport}

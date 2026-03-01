@@ -129,8 +129,8 @@ export function Minimap({ items, selectedIds, onNavigate, onSelectItem }: Minima
       }
 
       // Draw based on item type
-      if (item.kind === 'swatch' && item.color) {
-        // Swatches: circles with actual color
+      if ((item.kind === 'room' || item.kind === 'swatch') && item.color) {
+        // Rooms: circles with actual color
         ctx.fillStyle = item.color;
         ctx.strokeStyle = isSelected ? '#6366f1' : 'rgba(0, 0, 0, 0.2)';
         ctx.lineWidth = isSelected ? 2.5 : (isHovered ? 2 : 1);
@@ -243,7 +243,7 @@ export function Minimap({ items, selectedIds, onNavigate, onSelectItem }: Minima
   // Count items by type
   const imageCount = items.filter(i => i.kind === 'image').length;
   const textCount = items.filter(i => i.kind === 'text').length;
-  const swatchCount = items.filter(i => i.kind === 'swatch').length;
+  const roomCount = items.filter(i => i.kind === 'room' || i.kind === 'swatch').length;
 
   return (
     <div className="minimap-container" enable-xr>
@@ -272,7 +272,7 @@ export function Minimap({ items, selectedIds, onNavigate, onSelectItem }: Minima
         </div>
         <div className="minimap-legend-item">
           <div className="minimap-legend-icon">●</div>
-          <span>{swatchCount}</span>
+          <span>{roomCount}</span>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ import { createItem, getNextDepthStep } from '../logic/items';
 // Ghost dimensions by type (larger for better visibility)
 const GHOST_DIMENSIONS: Record<string, { width: number; height: number }> = {
   text: { width: 180, height: 70 },
-  swatch: { width: 100, height: 100 },
+  room: { width: 85, height: 95 },
   image: { width: 200, height: 150 },
 };
 
@@ -18,7 +18,7 @@ interface BoardProps {
   activeClusterTag?: string;
   activeGroupIds?: string[];  // For random grouping when no tags exist
   onContextMenu?: (itemId: string, x: number, y: number) => void;
-  placementMode?: { type: 'text' | 'swatch' | 'image'; data?: any } | null;
+  placementMode?: { type: 'text' | 'room' | 'image'; data?: any } | null;
   onPlacementClick?: (x: number, y: number) => void;
   onCancelPlacement?: () => void;
 }
@@ -205,7 +205,7 @@ export function Board({ items, selectedIds, dispatch, isPresentMode, activeClust
       icon.style.opacity = '0.7';
       icon.style.pointerEvents = 'none';
       icon.textContent = placementMode.type === 'text' ? '📝'
-                       : placementMode.type === 'swatch' ? '🎨'
+                       : placementMode.type === 'room' ? '🎨'
                        : '🖼';
       ghost.appendChild(icon);
 
