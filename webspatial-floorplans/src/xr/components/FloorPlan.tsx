@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT } from '../data/floorPlanRooms';
-import type { RoomDef } from '../data/floorPlanRooms';
-import { fetchFloorPlanRooms } from '../data/roomsService';
+import { FLOOR_PLAN_ROOMS, FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT } from '../data/floorPlanRooms';
 
 const STORAGE_KEY = 'floor-plan-toggled-rooms';
 
@@ -20,12 +18,7 @@ function saveToggledRooms(toggled: Record<string, boolean>) {
 }
 
 export function FloorPlan() {
-  const [rooms, setRooms] = useState<RoomDef[]>([]);
   const [toggled, setToggled] = useState<Record<string, boolean>>(loadToggledRooms);
-
-  useEffect(() => {
-    fetchFloorPlanRooms().then(setRooms).catch(console.error);
-  }, []);
 
   useEffect(() => {
     saveToggledRooms(toggled);
@@ -41,7 +34,7 @@ export function FloorPlan() {
         viewBox={`0 0 ${FLOOR_PLAN_WIDTH} ${FLOOR_PLAN_HEIGHT}`}
         className="floor-plan-svg"
       >
-        {rooms.map(room => {
+        {FLOOR_PLAN_ROOMS.map(room => {
           const isToggled = !!toggled[room.id];
           return (
             <g key={room.id} onClick={() => handleRoomClick(room.id)} className="floor-plan-room">

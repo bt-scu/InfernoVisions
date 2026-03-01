@@ -406,12 +406,10 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
   }
 }
 
-import { FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT } from '../data/floorPlanRooms';
-import { fetchFloorPlanRooms } from '../data/roomsService';
+import { FLOOR_PLAN_ROOMS, FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT } from '../data/floorPlanRooms';
 
-export async function createDemoBoard(): Promise<Item[]> {
-  const rooms = await fetchFloorPlanRooms();
-  return rooms.map(def =>
+export function createDemoBoard(): Item[] {
+  return FLOOR_PLAN_ROOMS.map(def =>
     createItem('room', { x: def.x, y: def.y }, {
       color: def.baseColor,
       name: def.label,

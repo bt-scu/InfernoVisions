@@ -1,8 +1,10 @@
 /**
- * Room type definitions and display constants for the floor plan.
- * Room data is fetched at runtime from the FastAPI /rooms endpoint
- * via roomsService.ts.
+ * Room positions and sizes for floor-plan.png (960x720).
+ * Data is sourced from rooms.json (detected room geometry) and
+ * scaled from the source image dimensions to the display canvas.
  */
+
+import roomsData from './rooms.json';
 
 export const FLOOR_PLAN_WIDTH = 960;
 export const FLOOR_PLAN_HEIGHT = 720;
@@ -16,3 +18,15 @@ export interface RoomDef {
   height: number;
   baseColor: string;
 }
+
+const [srcW, srcH] = roomsData.meta.image_size_px;
+
+export const FLOOR_PLAN_ROOMS: RoomDef[] = roomsData.rooms.map(r => ({
+  id: String(r.id),
+  label: `1${String(r.id).padStart(2, '0')}`,
+  x: Math.round(r.x * FLOOR_PLAN_WIDTH / srcW),
+  y: Math.round(r.y * FLOOR_PLAN_HEIGHT / srcH),
+  width: Math.round(r.width * FLOOR_PLAN_WIDTH / srcW),
+  height: Math.round(r.height * FLOOR_PLAN_HEIGHT / srcH),
+  baseColor: '#ffffff',
+}));
