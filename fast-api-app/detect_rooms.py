@@ -1,9 +1,10 @@
 import json
 import cv2
 import numpy as np
+from datetime import datetime, timezone
 
 IMAGE_PATH = "heafey_floor1.png"
-OUT_JSON = "rooms.json"
+OUT_JSON = "rooms_corrected_schema.json"
 
 # ── Tunables ─────────────────────────────────────────────────────────────
 BLACK_THRESH = 85          # lower = stricter (only very dark pixels count as walls)
@@ -73,7 +74,7 @@ inside_free = cv2.bitwise_and(free, cv2.bitwise_not(outside))
 # 5) Connected components on inside_free
 num_labels, labels, stats, _ = cv2.connectedComponentsWithStats(inside_free, connectivity=4)
 
-rooms = []
+raw_rooms = []
 for i in range(1, num_labels):
     x, y, ww, hh, area = stats[i]
 
@@ -84,42 +85,34 @@ for i in range(1, num_labels):
     if aspect > ASPECT_MAX or aspect < ASPECT_MIN:
         continue
 
+    raw_rooms.append((int(y), int(x), int(ww), int(hh)))
+
+# Sort top-to-bottom, left-to-right for stable room numbering
+raw_rooms.sort(key=lambda r: (r[0], r[1]))
+
+rooms = []
+updated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+for idx, (y, x, ww, hh) in enumerate(raw_rooms, start=1):
     rooms.append({
-        "id": int(i),
-        "x": int(x),
-        "y": int(y),
-        "width": int(ww),
-        "height": int(hh),
-        "area_px": int(area),
+        "room_number": str(idx),
+        "status": "clear",
+        "firefighters": "None",
+        "x_pos": float(x),
+        "y_pos": float(y),
+        "width": float(ww),
+        "height": float(hh),
+        "shape_type": "rectangle",
+        "updated_at": updated_at,
     })
 
-# Sort top-to-bottom, left-to-right (nice for stable output)
-rooms.sort(key=lambda r: (r["y"], r["x"]))
-
 out = {
-    "meta": {
-        "image": IMAGE_PATH,
-        "image_size_px": [int(w), int(h)],
-        "count": len(rooms),
-        "legend": {"x,y,width,height": "pixel coordinates (top-left origin)"},
-        "params": {
-            "BLACK_THRESH": BLACK_THRESH,
-            "CANNY_LOW": CANNY_LOW,
-            "CANNY_HIGH": CANNY_HIGH,
-            "HOUGH_THRESH": HOUGH_THRESH,
-            "MIN_LINE_LEN": MIN_LINE_LEN,
-            "MAX_LINE_GAP": MAX_LINE_GAP,
-            "WALL_THICKNESS": WALL_THICKNESS,
-            "CLOSE_KERNEL": CLOSE_KERNEL,
-            "CLOSE_ITERS": CLOSE_ITERS,
-            "DILATE_ITERS": DILATE_ITERS,
-            "MIN_ROOM_AREA": MIN_ROOM_AREA,
-            "MAX_ROOM_AREA": MAX_ROOM_AREA,
-            "ASPECT_MIN": ASPECT_MIN,
-            "ASPECT_MAX": ASPECT_MAX,
+    "name": "Heafey Building",
+    "floors": [
+        {
+            "level": 1,
+            "rooms": rooms,
         }
-    },
-    "rooms": rooms
+    ],
 }
 
 with open(OUT_JSON, "w") as f:
