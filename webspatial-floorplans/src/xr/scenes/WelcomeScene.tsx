@@ -14,10 +14,6 @@ export function WelcomeScene() {
     hubUrl.searchParams.set('scene', 'firefighter-hub');
     window.open(hubUrl.toString(), 'firefighterHub');
 
-    initScene('keyScene', prevConfig => ({
-      ...prevConfig,
-      defaultSize: { width: 160, height: 120 },
-    }));
     const keyUrl = new URL(window.location.href);
     keyUrl.searchParams.set('scene', 'key');
     window.open(keyUrl.toString(), 'keyScene');

@@ -1,6 +1,11 @@
 import '../styles/key.css';
 import '../styles/xr.css';
 
+window.xrCurrentSceneDefaults = async (config) => ({
+  ...config,
+  defaultSize: { width: 200, height: 130 },
+});
+
 const KEYS = [                                                                              
   { id: 'k1', label: 'k1', color: '#85E175' },                                                  
   { id: 'k2', label: 'k2', color: '#F96464' }                                                 
