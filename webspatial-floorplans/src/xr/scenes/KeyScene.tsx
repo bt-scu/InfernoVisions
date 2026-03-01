@@ -2,8 +2,8 @@ import '../styles/key.css';
 import '../styles/xr.css';
 
 const KEYS = [                                                                              
-  { id: 'k1', label: 'k1', color: '#85E175' },                                                  
-  { id: 'k2', label: 'k2', color: '#F96464' }                                                 
+  { id: 'k1', label: 'Hazard', color: '#85E175' },                                                  
+  { id: 'k2', label: 'Clear', color: '#F96464' }                                                 
 ]; 
 
 export function KeyScene() {
