@@ -73,16 +73,18 @@ export function FloorPlan() {
                 rx={4}
                 ry={4}
               />
-              <text
-                x={room.x + room.width / 2}
-                y={room.y + room.height / 2}
-                textAnchor="middle"
-                dominantBaseline="central"
-                className="floor-plan-label"
-                fontSize={room.width < 60 || room.height < 50 ? 10 : 13}
-              >
-                {room.label}
-              </text>
+              {state === 'default' && (
+                <text
+                  x={room.x + room.width / 2}
+                  y={room.y + room.height / 2}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  className="floor-plan-label"
+                  fontSize={room.width < 60 || room.height < 50 ? 10 : 13}
+                >
+                  {room.label}
+                </text>
+              )}
             </g>
           );
         })}
