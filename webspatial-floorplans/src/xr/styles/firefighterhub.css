@@ -6,20 +6,22 @@
 }
 
 .firefighter-hub {
-  padding: 24px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  row-gap: 32px;
+  row-gap: 18px;
   column-gap: 48px;
   border-radius: 24px;
   overflow: hidden;
   justify-items: center;
   align-items: center;
+  border: 5px solid #8B1A1A;
+  border-radius: 20px;
+  padding: 8px 325px;
 }
 
 .firefighter-dot{
-  width: 60px;          
-  height: 60px;         
+  width: 50px;          
+  height: 50px;         
   border-radius: 50%;   
   flex-shrink: 0;
   margin-right: 10px;
@@ -36,7 +38,7 @@
 
 .firefighter-label {
   margin: 0;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   color: #B82424;
 }

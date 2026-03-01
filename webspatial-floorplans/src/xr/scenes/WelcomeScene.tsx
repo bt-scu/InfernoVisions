@@ -8,7 +8,7 @@ export function WelcomeScene() {
   const handleDismiss = useCallback(() => {
     initScene('firefighterHub', prevConfig => ({
       ...prevConfig,
-      defaultSize: { width: 1800, height: 150 },
+      defaultSize: { width: 1200, height: 150 },
     }));
     const hubUrl = new URL(window.location.href);
     hubUrl.searchParams.set('scene', 'firefighter-hub');
@@ -16,7 +16,7 @@ export function WelcomeScene() {
 
     initScene('keyScene', prevConfig => ({
       ...prevConfig,
-      defaultSize: { width: 1800, height: 150 },
+      defaultSize: { width: 1200, height: 150 },
     }));
     const keyUrl = new URL(window.location.href);
     keyUrl.searchParams.set('scene', 'key');
