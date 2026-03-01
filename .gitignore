@@ -1,6 +1,7 @@
 # Python / FastAPI
 fast-api-app/venv/
 fast-api-app/__pycache__/
+fast-api-app/db/__pycache__/
 fast-api-app/.env
 fast-api-app/*.pyc
 
@@ -11,3 +12,6 @@ react-app/.env.local
 
 # OS
 .DS_Store
+
+
+CLAUDE.md
