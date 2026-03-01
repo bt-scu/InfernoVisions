@@ -5,13 +5,21 @@ import infernoLogo from '../../assets/inferno.png';
 
 export function WelcomeScene() {
   const handleDismiss = useCallback(() => {
+    initScene('firefighterHub', prevConfig => ({
+      ...prevConfig,
+      defaultSize: { width: 400, height: 600 },
+    }));
     const hubUrl = new URL(window.location.href);
     hubUrl.searchParams.set('scene', 'firefighter-hub');
-    window.open(hubUrl.toString(), '_blank');
+    window.open(hubUrl.toString(), 'firefighterHub');
 
+    initScene('keyScene', prevConfig => ({
+      ...prevConfig,
+      defaultSize: { width: 400, height: 600 },
+    }));
     const keyUrl = new URL(window.location.href);
     keyUrl.searchParams.set('scene', 'key');
-    window.open(keyUrl.toString(), '_blank');
+    window.open(keyUrl.toString(), 'keyScene');
 
     const url = new URL(window.location.href);
     url.searchParams.set('scene', 'board');

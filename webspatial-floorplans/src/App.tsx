@@ -9,6 +9,7 @@ import { WelcomeScene } from './xr/scenes/WelcomeScene';
 import { ClearScene } from './xr/scenes/ClearScene';
 import { GridAlignScene } from './xr/scenes/GridAlignScene';
 import { FirefighterHubScene } from './xr/scenes/FirefighterHubScene';
+import { KeyScene } from './xr/scenes/KeyScene';
 
 
 function App() {
@@ -54,6 +55,10 @@ function App() {
 
   if (scene === 'firefighter-hub') {
     return <FirefighterHubScene />;
+  }
+
+  if (scene === 'key') {
+    return <KeyScene />;
   }
 
   if (scene === 'board') {
