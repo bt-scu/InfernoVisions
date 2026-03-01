@@ -24,11 +24,11 @@ async def create_building_from_json(db: AsyncSession, data: dict):
             await db.execute(
                 text("""
                     INSERT INTO rooms (
-                        room_number, status, firefighter_name, 
+                        room_number, status, firefighters, 
                         x_pos, y_pos, width, height, 
                         shape_type, floor_id, building_id
                     ) VALUES (
-                        :room_number, :status, :firefighter_name, 
+                        :room_number, :status, :firefighters, 
                         :x_pos, :y_pos, :width, :height, 
                         :shape_type, :floor_id, :building_id
                     )
@@ -36,7 +36,7 @@ async def create_building_from_json(db: AsyncSession, data: dict):
                 {
                     "room_number": room["room_number"],
                     "status": room["status"],
-                    "firefighter_name": room["firefighter_name"],
+                    "firefighters": room["firefighters"],
                     "x_pos": room["x_pos"],
                     "y_pos": room["y_pos"],
                     "width": room["width"],
