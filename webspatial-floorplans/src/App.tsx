@@ -12,16 +12,9 @@ import { FirefighterHubScene } from './xr/scenes/FirefighterHubScene';
 import { KeyScene } from './xr/scenes/KeyScene';
 
 
-const _sceneParam = new URLSearchParams(window.location.search).get('scene');
-if (_sceneParam === 'key') {
-  window.xrCurrentSceneDefaults = async (config) => ({
-    ...config,
-    defaultSize: { width: 200, height: 130 },
-  });
-}
-
 function App() {
-  const scene = _sceneParam;
+  const params = new URLSearchParams(window.location.search);
+  const scene = params.get('scene');
 
   if (scene === 'palette') {
     return <PaletteScene />;
