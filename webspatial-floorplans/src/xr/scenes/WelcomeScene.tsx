@@ -11,7 +11,7 @@ export function WelcomeScene() {
 
   return (
     <div className="welcome-scene">
-      <h2 className="welcome-title">Welcome to Spatial Canvas</h2>
+      <h2 className="welcome-title">Inferno Vision</h2>
       <p className="welcome-subtitle">Open these panels from the toolbar to enhance your workspace:</p>
 
       <div className="welcome-panels">
