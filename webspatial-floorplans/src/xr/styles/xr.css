@@ -1908,6 +1908,14 @@ html.is-spatial .floor-plan {
   background-color: transparent;
 }
 
+.floor-plan-2 {
+  background: url('/floor-plan-2.png') 0 0 / 960px 720px no-repeat;
+}
+
+html.is-spatial .floor-plan-2 {
+  background-color: transparent;
+}
+
 .floor-plan-svg {
   position: absolute;
   top: 0;
