@@ -27,10 +27,10 @@ export function WelcomeScene() {
             style={{ width: 'auto', padding: '12px 24px', margin: 0, transition: 'background 0.2s, color 0.2s' }}
             onMouseEnter={e => {
               (e.currentTarget as HTMLButtonElement).style.background = '#B82424';
-              (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.95)';
+              (e.currentTarget as HTMLButtonElement).style.color = '#FFE7E7';
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.95)';
+              (e.currentTarget as HTMLButtonElement).style.background = '#FFE7E7';
               (e.currentTarget as HTMLButtonElement).style.color = '#B82424';
             }}
           >
