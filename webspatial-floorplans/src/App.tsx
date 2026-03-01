@@ -1,4 +1,4 @@
-import { BoardScene } from './xr/scenes/BoardScene';
+import { Floor1Scene } from './xr/scenes/Floor1Scene';
 import { PaletteScene } from './xr/scenes/PaletteScene';
 import { LayersScene } from './xr/scenes/LayersScene';
 import { ControlsScene } from './xr/scenes/ControlsScene';
@@ -61,7 +61,7 @@ function App() {
   }
 
   if (scene === 'board') {
-    return <BoardScene />;
+    return <Floor1Scene />;
   }
 
   // Default to welcome scene on start
