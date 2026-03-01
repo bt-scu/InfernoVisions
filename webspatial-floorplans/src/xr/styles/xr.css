@@ -3000,7 +3000,7 @@ html.is-spatial .welcome-scene {
 .welcome-dismiss-btn {
   width: 100%;
   padding: 16px 24px;
-  background: #FFE7E7;
+  background: white;
   color: #B82424;
   border: none;
   border-radius: 14px;
@@ -3012,8 +3012,8 @@ html.is-spatial .welcome-scene {
 }
 
 .welcome-dismiss-btn:hover {
-  background: #B82424;
-  color: #FFE7E7;
+  background: #FFE7E7;
+  color: #B82424;
   transform: scale(1.02);
 }
 
