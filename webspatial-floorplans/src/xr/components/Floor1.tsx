@@ -10,7 +10,7 @@ const GHOST_DIMENSIONS: Record<string, { width: number; height: number }> = {
   image: { width: 200, height: 150 },
 };
 
-interface BoardProps {
+interface Floor1Props {
   items: ItemType[];
   selectedIds: string[];
   dispatch: React.Dispatch<BoardAction>;
@@ -23,7 +23,7 @@ interface BoardProps {
   onCancelPlacement?: () => void;
 }
 
-export function Board({ items, selectedIds, dispatch, isPresentMode, activeClusterTag, activeGroupIds, onContextMenu, placementMode, onPlacementClick, onCancelPlacement }: BoardProps) {
+export function Floor1({ items, selectedIds, dispatch, isPresentMode, activeClusterTag, activeGroupIds, onContextMenu, placementMode, onPlacementClick, onCancelPlacement }: Floor1Props) {
   const boardRef = useRef<HTMLDivElement>(null);
   const dragGhostRef = useRef<HTMLDivElement | null>(null);
 
