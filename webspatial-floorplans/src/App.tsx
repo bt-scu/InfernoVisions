@@ -8,6 +8,8 @@ import { ImportScene } from './xr/scenes/ImportScene';
 import { WelcomeScene } from './xr/scenes/WelcomeScene';
 import { ClearScene } from './xr/scenes/ClearScene';
 import { GridAlignScene } from './xr/scenes/GridAlignScene';
+import { MainScene } from './xr/scenes/MainScene';
+
 
 function App() {
   // Determine which scene to render based on URL parameters
@@ -51,7 +53,7 @@ function App() {
   }
 
   if (scene === 'board') {
-    return <BoardScene />;
+    return <MainScene />;
   }
 
   // Default to welcome scene on start
