@@ -8,7 +8,7 @@ import { ImportScene } from './xr/scenes/ImportScene';
 import { WelcomeScene } from './xr/scenes/WelcomeScene';
 import { ClearScene } from './xr/scenes/ClearScene';
 import { GridAlignScene } from './xr/scenes/GridAlignScene';
-import { MainScene } from './xr/scenes/MainScene';
+import { FirefighterHubScene } from './xr/scenes/FirefighterHubScene';
 
 
 function App() {
@@ -52,8 +52,12 @@ function App() {
     return <GridAlignScene />;
   }
 
+  if (scene === 'firefighter-hub') {
+    return <FirefighterHubScene />;
+  }
+
   if (scene === 'board') {
-    return <MainScene />;
+    return <BoardScene />;
   }
 
   // Default to welcome scene on start

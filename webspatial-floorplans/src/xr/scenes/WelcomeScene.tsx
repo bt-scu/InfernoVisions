@@ -5,6 +5,10 @@ import infernoLogo from '../../assets/inferno.png';
 
 export function WelcomeScene() {
   const handleDismiss = useCallback(() => {
+    const hubUrl = new URL(window.location.href);
+    hubUrl.searchParams.set('scene', 'firefighter-hub');
+    window.open(hubUrl.toString(), '_blank');
+
     const url = new URL(window.location.href);
     url.searchParams.set('scene', 'board');
     window.location.href = url.toString();
