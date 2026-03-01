@@ -69,12 +69,15 @@ html.is-spatial .right-sidebar {
   height: 100vh;
   min-height: 600px;
   overflow: visible;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: url('/floor-plan.png') center center / contain no-repeat,
+    linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background-color: #1a1a2e;
   padding: 60px;
 }
 
 html.is-spatial .board {
-  background: transparent;
+  background-color: transparent;
+  /* Keep floor plan image in spatial mode */
 }
 
 /* Placement mode */
@@ -186,10 +189,11 @@ html.is-spatial .drag-ghost {
 }
 
 .item-room {
-  width: 85px;
-  height: 95px;
+  /* width/height set inline from item.width, item.height */
+  min-width: 40px;
+  min-height: 40px;
   border-radius: 8px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.15);
 }
 
 .item-text {

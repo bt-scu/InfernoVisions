@@ -3,7 +3,7 @@ import { Board } from '../components/Board';
 import { Toolbar } from '../components/Toolbar';
 import { CommandPalette } from '../components/CommandPalette';
 import { ContextMenu } from '../components/ContextMenu';
-import { boardReducer, createItem, createDemoBoard } from '../logic/items';
+import { boardReducer, createItem, createDemoBoard, DEFAULT_ROOM_WIDTH, DEFAULT_ROOM_HEIGHT } from '../logic/items';
 import { saveBoard, loadBoard } from '../logic/storage';
 import { createChannel, closeChannel } from '../logic/channel';
 import type { ChannelMessage } from '../logic/channel';
@@ -370,7 +370,11 @@ export function BoardScene() {
     if (placementMode.type === 'text') {
       item = createItem('text', { x, y }, { text: 'New text box' });
     } else if (placementMode.type === 'room') {
-      item = createItem('room', { x, y }, { color: placementMode.data?.color });
+      item = createItem('room', { x, y }, {
+        color: placementMode.data?.color,
+        width: DEFAULT_ROOM_WIDTH,
+        height: DEFAULT_ROOM_HEIGHT,
+      });
     } else if (placementMode.type === 'image') {
       item = createItem('image', { x, y }, { src: placementMode.data?.src });
     }

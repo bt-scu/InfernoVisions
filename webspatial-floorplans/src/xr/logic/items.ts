@@ -1,6 +1,6 @@
 // Data model and state management for moodboard items
 
-export type ItemKind = 'image' | 'room' | 'text';
+export type ItemKind = 'image' | 'room' | 'text' | 'swatch'; // 'swatch' = legacy, treated as room
 
 export interface Item {
   id: string;
@@ -14,6 +14,8 @@ export interface Item {
   src?: string;     // for images
   text?: string;    // for text chips
   color?: string;   // for rooms
+  width?: number;   // for rooms - custom width
+  height?: number;  // for rooms - custom height
   tags: string[];
   // Enhanced layer properties
   name?: string;    // custom layer name
@@ -30,6 +32,21 @@ export interface BoardState {
 // Valid depth steps in pt
 export const DEPTH_STEPS = [0, 24, 48, 80];
 export const FOCUS_LIFT = 6; // Temporary elevation on focus
+
+// Default room dimensions (used when width/height not set)
+export const DEFAULT_ROOM_WIDTH = 85;
+export const DEFAULT_ROOM_HEIGHT = 95;
+
+/** Get dimensions for a room/swatch item */
+export function getRoomDimensions(item: Item): { width: number; height: number } {
+  if (item.kind !== 'room' && item.kind !== 'swatch') {
+    return { width: 180, height: 60 }; // text fallback
+  }
+  return {
+    width: item.width ?? DEFAULT_ROOM_WIDTH,
+    height: item.height ?? DEFAULT_ROOM_HEIGHT,
+  };
+}
 
 // Helper to snap to nearest depth step
 export function snapToDepthStep(z: number): number {
@@ -350,11 +367,14 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
       const maxWidth = 1100; // Board width minus padding
 
       // Calculate actual item sizes based on type
-      const itemSizes = state.items.map(item => ({
-        item,
-        width: item.kind === 'image' ? 200 : (item.kind === 'room' || item.kind === 'swatch') ? 85 : 180,
-        height: item.kind === 'image' ? 150 : (item.kind === 'room' || item.kind === 'swatch') ? 95 : 60,
-      }));
+      const itemSizes = state.items.map(item => {
+        const dims = (item.kind === 'room' || item.kind === 'swatch')
+          ? getRoomDimensions(item)
+          : item.kind === 'image'
+            ? { width: 200, height: 150 }
+            : { width: 180, height: 60 };
+        return { item, width: dims.width, height: dims.height };
+      });
 
       // Row-based packing algorithm
       let x = padding;
@@ -386,125 +406,128 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
   }
 }
 
-// Room dimensions (hardcoded for floor plan)
-const ROOM_SWATCH_WIDTH = 85;
-const ROOM_SWATCH_HEIGHT = 95;
-const ROOM_GAP = 12;
-
 // Base colors for floor plan rooms
 const ROOM_COLOR = '#ffffff';
 const CORRIDOR_COLOR = '#e5e7eb';
 const OPEN_AREA_COLOR = '#bae6fd';
 
-// Initial state: rooms laid out in floor-plan-style grid
+// Standard and varied room sizes (align with floor plan proportions)
+const STD = { w: 85, h: 95 };      // standard office
+const LARGE = { w: 170, h: 120 };  // room 107
+const WIDE = { w: 170, h: 95 };    // room 122
+const OPEN = { w: 250, h: 180 };   // open area
+const CORR = { w: 120, h: 140 };   // corridor
+
+// Initial state: rooms laid out to match floor plan (960x720), with varied sizes
 export function createDemoBoard(): Item[] {
   const rooms: Item[] = [];
-  let x = 60;
-  let y = 60;
 
-  // Left column: rooms 101-106
+  // Left column: rooms 101-106 (standard)
+  let y = 30;
   for (let i = 101; i <= 106; i++) {
     rooms.push(
-      createItem('room', { x, y }, {
+      createItem('room', { x: 30, y }, {
         color: ROOM_COLOR,
         name: `Room ${i}`,
         tags: ['room'],
         rot: 0,
+        width: STD.w,
+        height: STD.h,
       })
     );
-    y += ROOM_SWATCH_HEIGHT + ROOM_GAP;
+    y += STD.h + 8;
   }
 
-  // Top section: rooms 107, 108, 109
-  x = 220;
-  y = 60;
-  for (let i = 107; i <= 109; i++) {
-    rooms.push(
-      createItem('room', { x, y }, {
-        color: ROOM_COLOR,
-        name: `Room ${i}`,
-        tags: ['room'],
-        rot: 0,
-      })
-    );
-    x += ROOM_SWATCH_WIDTH + ROOM_GAP;
-  }
-
-  // Right column top: rooms 110-115
-  x = 520;
-  y = 60;
-  for (let i = 110; i <= 115; i++) {
-    rooms.push(
-      createItem('room', { x, y }, {
-        color: i === 114 ? CORRIDOR_COLOR : ROOM_COLOR,
-        name: i === 114 ? 'Corridor' : `Room ${i}`,
-        tags: ['room'],
-        rot: 0,
-      })
-    );
-    y += ROOM_SWATCH_HEIGHT + ROOM_GAP;
-  }
-
-  // Left-center: rooms 116-119
-  x = 60;
-  y = 480;
-  for (let i = 116; i <= 119; i++) {
-    rooms.push(
-      createItem('room', { x, y }, {
-        color: ROOM_COLOR,
-        name: `Room ${i}`,
-        tags: ['room'],
-        rot: 0,
-      })
-    );
-    x += ROOM_SWATCH_WIDTH + ROOM_GAP;
-  }
-
-  // Bottom row: rooms 120, 121, 122
-  x = 220;
-  y = 580;
-  for (let i = 120; i <= 122; i++) {
-    rooms.push(
-      createItem('room', { x, y }, {
-        color: ROOM_COLOR,
-        name: `Room ${i}`,
-        tags: ['room'],
-        rot: 0,
-      })
-    );
-    x += ROOM_SWATCH_WIDTH + ROOM_GAP;
-  }
-
-  // Right column: rooms 123-129
-  x = 700;
-  y = 300;
-  for (let i = 123; i <= 129; i++) {
-    rooms.push(
-      createItem('room', { x, y }, {
-        color: ROOM_COLOR,
-        name: `Room ${i}`,
-        tags: ['room'],
-        rot: 0,
-      })
-    );
-    y += ROOM_SWATCH_HEIGHT + ROOM_GAP;
-  }
-
-  // Open area and corridors
+  // Room 107: notably larger
   rooms.push(
-    createItem('room', { x: 220, y: 200 }, {
-      color: OPEN_AREA_COLOR,
-      name: 'Open Area',
-      tags: ['open'],
+    createItem('room', { x: 140, y: 30 }, {
+      color: ROOM_COLOR,
+      name: 'Room 107',
+      tags: ['room'],
       rot: 0,
-    }),
-    createItem('room', { x: 160, y: 300 }, {
+      width: LARGE.w,
+      height: LARGE.h,
+    })
+  );
+
+  // Rooms 108, 109 (standard)
+  rooms.push(
+    createItem('room', { x: 330, y: 30 }, { color: ROOM_COLOR, name: 'Room 108', tags: ['room'], rot: 0, width: STD.w, height: STD.h }),
+    createItem('room', { x: 330, y: 135 }, { color: ROOM_COLOR, name: 'Room 109', tags: ['room'], rot: 0, width: STD.w, height: STD.h })
+  );
+
+  // Right column: 110-115
+  y = 30;
+  for (let i = 110; i <= 115; i++) {
+    const isCorridor = i === 114;
+    rooms.push(
+      createItem('room', { x: 435, y }, {
+        color: isCorridor ? CORRIDOR_COLOR : ROOM_COLOR,
+        name: isCorridor ? 'Corridor' : `Room ${i}`,
+        tags: ['room'],
+        rot: 0,
+        width: STD.w,
+        height: STD.h,
+      })
+    );
+    y += STD.h + 8;
+  }
+
+  // Corridor (vertical, left-center)
+  rooms.push(
+    createItem('room', { x: 130, y: 280 }, {
       color: CORRIDOR_COLOR,
       name: 'Corridor',
       tags: ['corridor'],
       rot: 0,
+      width: CORR.w,
+      height: CORR.h,
     })
   );
+
+  // Open area (center)
+  rooms.push(
+    createItem('room', { x: 140, y: 150 }, {
+      color: OPEN_AREA_COLOR,
+      name: 'Open Area',
+      tags: ['open'],
+      rot: 0,
+      width: OPEN.w,
+      height: OPEN.h,
+    })
+  );
+
+  // Left: rooms 116-119
+  y = 430;
+  for (let i = 116; i <= 119; i++) {
+    rooms.push(
+      createItem('room', { x: 30, y }, { color: ROOM_COLOR, name: `Room ${i}`, tags: ['room'], rot: 0, width: STD.w, height: STD.h })
+    );
+    y += STD.h + 8;
+  }
+
+  // Bottom: 120, 121, 122 (122 is larger)
+  rooms.push(
+    createItem('room', { x: 140, y: 520 }, { color: ROOM_COLOR, name: 'Room 120', tags: ['room'], rot: 0, width: STD.w, height: STD.h }),
+    createItem('room', { x: 235, y: 520 }, { color: ROOM_COLOR, name: 'Room 121', tags: ['room'], rot: 0, width: STD.w, height: STD.h }),
+    createItem('room', { x: 330, y: 460 }, {
+      color: ROOM_COLOR,
+      name: 'Room 122',
+      tags: ['room'],
+      rot: 0,
+      width: WIDE.w,
+      height: WIDE.h,
+    })
+  );
+
+  // Right column: 123-129
+  y = 250;
+  for (let i = 123; i <= 129; i++) {
+    rooms.push(
+      createItem('room', { x: 530, y }, { color: ROOM_COLOR, name: `Room ${i}`, tags: ['room'], rot: 0, width: STD.w, height: STD.h })
+    );
+    y += STD.h + 8;
+  }
 
   return rooms;
 }
