@@ -21,7 +21,7 @@ export interface RoomDef {
 // Room definitions traced from Heafey floor plan layout
 export const FLOOR_PLAN_ROOMS: RoomDef[] = [
   // Left column - 101 (large), 102-106 (stacked)
-  { id: '101', label: '101', x: 400, y: 35, width: 95, height: 130, baseColor: '#ffffff' },
+  { id: '101', label: '101', x: 452, y: 50, width: 67, height: 157, baseColor: '#ffffff' },
   // { id: '102', label: '102', x: 48, y: 168, width: 125, height: 88, baseColor: '#ffffff' },
   // { id: '103', label: '103', x: 48, y: 262, width: 125, height: 88, baseColor: '#ffffff' },
   // { id: '104', label: '104', x: 48, y: 356, width: 125, height: 88, baseColor: '#ffffff' },
@@ -61,5 +61,5 @@ export const FLOOR_PLAN_ROOMS: RoomDef[] = [
   // { id: '126', label: '126', x: 673, y: 408, width: 95, height: 72, baseColor: '#ffffff' },
   // { id: '127', label: '127', x: 673, y: 486, width: 95, height: 72, baseColor: '#ffffff' },
   // { id: '128', label: '128', x: 673, y: 564, width: 95, height: 72, baseColor: '#ffffff' },
-  { id: '129', label: '129', x: 773, y: 408, width: 95, height: 228, baseColor: '#ffffff' },
+  { id: '129', label: '129', x: 620, y: 387, width: 54, height: 26, baseColor: '#ffffff' },
 ];
