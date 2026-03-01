@@ -406,128 +406,20 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
   }
 }
 
-// Base colors for floor plan rooms
-const ROOM_COLOR = '#ffffff';
-const CORRIDOR_COLOR = '#e5e7eb';
-const OPEN_AREA_COLOR = '#bae6fd';
+import { FLOOR_PLAN_ROOMS, FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT } from '../data/floorPlanRooms';
 
-// Standard and varied room sizes (align with floor plan proportions)
-const STD = { w: 85, h: 95 };      // standard office
-const LARGE = { w: 170, h: 120 };  // room 107
-const WIDE = { w: 170, h: 95 };    // room 122
-const OPEN = { w: 250, h: 180 };   // open area
-const CORR = { w: 120, h: 140 };   // corridor
-
-// Initial state: rooms laid out to match floor plan (960x720), with varied sizes
+// Initial state: rooms from floor plan config (positions/sizes match floor-plan.png)
 export function createDemoBoard(): Item[] {
-  const rooms: Item[] = [];
-
-  // Left column: rooms 101-106 (standard)
-  let y = 30;
-  for (let i = 101; i <= 106; i++) {
-    rooms.push(
-      createItem('room', { x: 30, y }, {
-        color: ROOM_COLOR,
-        name: `Room ${i}`,
-        tags: ['room'],
-        rot: 0,
-        width: STD.w,
-        height: STD.h,
-      })
-    );
-    y += STD.h + 8;
-  }
-
-  // Room 107: notably larger
-  rooms.push(
-    createItem('room', { x: 140, y: 30 }, {
-      color: ROOM_COLOR,
-      name: 'Room 107',
-      tags: ['room'],
+  return FLOOR_PLAN_ROOMS.map(def =>
+    createItem('room', { x: def.x, y: def.y }, {
+      color: def.baseColor,
+      name: def.label,
+      tags: def.id.startsWith('corridor') ? ['corridor'] : def.id === 'open' ? ['open'] : ['room'],
       rot: 0,
-      width: LARGE.w,
-      height: LARGE.h,
+      width: def.width,
+      height: def.height,
     })
   );
-
-  // Rooms 108, 109 (standard)
-  rooms.push(
-    createItem('room', { x: 330, y: 30 }, { color: ROOM_COLOR, name: 'Room 108', tags: ['room'], rot: 0, width: STD.w, height: STD.h }),
-    createItem('room', { x: 330, y: 135 }, { color: ROOM_COLOR, name: 'Room 109', tags: ['room'], rot: 0, width: STD.w, height: STD.h })
-  );
-
-  // Right column: 110-115
-  y = 30;
-  for (let i = 110; i <= 115; i++) {
-    const isCorridor = i === 114;
-    rooms.push(
-      createItem('room', { x: 435, y }, {
-        color: isCorridor ? CORRIDOR_COLOR : ROOM_COLOR,
-        name: isCorridor ? 'Corridor' : `Room ${i}`,
-        tags: ['room'],
-        rot: 0,
-        width: STD.w,
-        height: STD.h,
-      })
-    );
-    y += STD.h + 8;
-  }
-
-  // Corridor (vertical, left-center)
-  rooms.push(
-    createItem('room', { x: 130, y: 280 }, {
-      color: CORRIDOR_COLOR,
-      name: 'Corridor',
-      tags: ['corridor'],
-      rot: 0,
-      width: CORR.w,
-      height: CORR.h,
-    })
-  );
-
-  // Open area (center)
-  rooms.push(
-    createItem('room', { x: 140, y: 150 }, {
-      color: OPEN_AREA_COLOR,
-      name: 'Open Area',
-      tags: ['open'],
-      rot: 0,
-      width: OPEN.w,
-      height: OPEN.h,
-    })
-  );
-
-  // Left: rooms 116-119
-  y = 430;
-  for (let i = 116; i <= 119; i++) {
-    rooms.push(
-      createItem('room', { x: 30, y }, { color: ROOM_COLOR, name: `Room ${i}`, tags: ['room'], rot: 0, width: STD.w, height: STD.h })
-    );
-    y += STD.h + 8;
-  }
-
-  // Bottom: 120, 121, 122 (122 is larger)
-  rooms.push(
-    createItem('room', { x: 140, y: 520 }, { color: ROOM_COLOR, name: 'Room 120', tags: ['room'], rot: 0, width: STD.w, height: STD.h }),
-    createItem('room', { x: 235, y: 520 }, { color: ROOM_COLOR, name: 'Room 121', tags: ['room'], rot: 0, width: STD.w, height: STD.h }),
-    createItem('room', { x: 330, y: 460 }, {
-      color: ROOM_COLOR,
-      name: 'Room 122',
-      tags: ['room'],
-      rot: 0,
-      width: WIDE.w,
-      height: WIDE.h,
-    })
-  );
-
-  // Right column: 123-129
-  y = 250;
-  for (let i = 123; i <= 129; i++) {
-    rooms.push(
-      createItem('room', { x: 530, y }, { color: ROOM_COLOR, name: `Room ${i}`, tags: ['room'], rot: 0, width: STD.w, height: STD.h })
-    );
-    y += STD.h + 8;
-  }
-
-  return rooms;
 }
+
+export { FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT };
