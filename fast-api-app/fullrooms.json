@@ -1,0 +1,653 @@
+{
+  "name": "Heafey Building",
+  "floors": [
+    {
+      "level": 1,
+      "rooms": [
+        {
+          "room_number": "101",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 788.0,
+          "y_pos": 91.0,
+          "width": 114.0,
+          "height": 265.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "115",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1033.0,
+          "y_pos": 93.0,
+          "width": 137.0,
+          "height": 79.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "114",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 957.0,
+          "y_pos": 180.0,
+          "width": 67.0,
+          "height": 49.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "113",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1035.0,
+          "y_pos": 183.0,
+          "width": 131.0,
+          "height": 72.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "110",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1035.0,
+          "y_pos": 266.0,
+          "width": 131.0,
+          "height": 176.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "112",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 957.0,
+          "y_pos": 298.0,
+          "width": 67.0,
+          "height": 52.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "111",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 955.0,
+          "y_pos": 360.0,
+          "width": 69.0,
+          "height": 65.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "102",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 845.0,
+          "y_pos": 363.0,
+          "width": 53.0,
+          "height": 37.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "103",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 845.0,
+          "y_pos": 405.0,
+          "width": 53.0,
+          "height": 43.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "107",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1035.0,
+          "y_pos": 453.0,
+          "width": 130.0,
+          "height": 214.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "104",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 845.0,
+          "y_pos": 454.0,
+          "width": 53.0,
+          "height": 44.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "109",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 960.0,
+          "y_pos": 482.0,
+          "width": 64.0,
+          "height": 49.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "105",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 845.0,
+          "y_pos": 504.0,
+          "width": 54.0,
+          "height": 43.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "108",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 958.0,
+          "y_pos": 542.0,
+          "width": 66.0,
+          "height": 65.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "106",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 843.0,
+          "y_pos": 552.0,
+          "width": 56.0,
+          "height": 55.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "116",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 514.0,
+          "y_pos": 637.0,
+          "width": 62.0,
+          "height": 88.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "129",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1086.0,
+          "y_pos": 675.0,
+          "width": 79.0,
+          "height": 38.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "128",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1086.0,
+          "y_pos": 724.0,
+          "width": 79.0,
+          "height": 34.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "117",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 514.0,
+          "y_pos": 733.0,
+          "width": 62.0,
+          "height": 186.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "127",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1085.0,
+          "y_pos": 769.0,
+          "width": 80.0,
+          "height": 35.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "126",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1085.0,
+          "y_pos": 815.0,
+          "width": 79.0,
+          "height": 40.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "125",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1083.0,
+          "y_pos": 865.0,
+          "width": 81.0,
+          "height": 40.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "122",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 953.0,
+          "y_pos": 888.0,
+          "width": 94.0,
+          "height": 128.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "124",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1083.0,
+          "y_pos": 914.0,
+          "width": 81.0,
+          "height": 45.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "118",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 514.0,
+          "y_pos": 927.0,
+          "width": 62.0,
+          "height": 86.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "123",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 1085.0,
+          "y_pos": 970.0,
+          "width": 79.0,
+          "height": 48.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "119",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 536.0,
+          "y_pos": 1074.0,
+          "width": 69.0,
+          "height": 114.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "120",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 794.0,
+          "y_pos": 1103.0,
+          "width": 68.0,
+          "height": 83.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        },
+        {
+          "room_number": "121",
+          "status": "clear",
+          "firefighters": "None",
+          "x_pos": 873.0,
+          "y_pos": 1103.0,
+          "width": 71.0,
+          "height": 83.0,
+          "shape_type": "rectangle",
+          "updated_at": "2026-03-01T09:00:20Z"
+        }
+      ]
+    },
+      {
+        "level": 2,
+        "rooms": [
+          {
+            "room_number": "215",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1037.0,
+            "y_pos": 88.0,
+            "width": 130.0,
+            "height": 82.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "201",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 793.0,
+            "y_pos": 90.0,
+            "width": 107.0,
+            "height": 269.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "214",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 958.0,
+            "y_pos": 180.0,
+            "width": 68.0,
+            "height": 51.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "213",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1037.0,
+            "y_pos": 181.0,
+            "width": 130.0,
+            "height": 76.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "210",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1037.0,
+            "y_pos": 263.0,
+            "width": 130.0,
+            "height": 180.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "212",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 955.0,
+            "y_pos": 298.0,
+            "width": 71.0,
+            "height": 56.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "211",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 956.0,
+            "y_pos": 362.0,
+            "width": 70.0,
+            "height": 58.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "202",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 842.0,
+            "y_pos": 368.0,
+            "width": 58.0,
+            "height": 31.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "203",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 842.0,
+            "y_pos": 404.0,
+            "width": 57.0,
+            "height": 41.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "207",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1035.0,
+            "y_pos": 449.0,
+            "width": 132.0,
+            "height": 213.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "204",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 842.0,
+            "y_pos": 456.0,
+            "width": 59.0,
+            "height": 42.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "209",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 959.0,
+            "y_pos": 479.0,
+            "width": 66.0,
+            "height": 52.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "205",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 844.0,
+            "y_pos": 504.0,
+            "width": 54.0,
+            "height": 41.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "208",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 959.0,
+            "y_pos": 542.0,
+            "width": 66.0,
+            "height": 64.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "206",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 844.0,
+            "y_pos": 550.0,
+            "width": 56.0,
+            "height": 54.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "216",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 515.0,
+            "y_pos": 637.0,
+            "width": 63.0,
+            "height": 85.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "229",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1088.0,
+            "y_pos": 674.0,
+            "width": 76.0,
+            "height": 39.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "228",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1088.0,
+            "y_pos": 724.0,
+            "width": 76.0,
+            "height": 36.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "217",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 515.0,
+            "y_pos": 733.0,
+            "width": 63.0,
+            "height": 188.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "227",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1085.0,
+            "y_pos": 771.0,
+            "width": 79.0,
+            "height": 35.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "226",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1087.0,
+            "y_pos": 817.0,
+            "width": 77.0,
+            "height": 39.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "225",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1087.0,
+            "y_pos": 867.0,
+            "width": 77.0,
+            "height": 38.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "222",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 958.0,
+            "y_pos": 888.0,
+            "width": 89.0,
+            "height": 129.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "224",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1087.0,
+            "y_pos": 916.0,
+            "width": 77.0,
+            "height": 43.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "218",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 515.0,
+            "y_pos": 927.0,
+            "width": 63.0,
+            "height": 86.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "223",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 1087.0,
+            "y_pos": 970.0,
+            "width": 77.0,
+            "height": 50.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "219",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 538.0,
+            "y_pos": 1079.0,
+            "width": 70.0,
+            "height": 105.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "220",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 798.0,
+            "y_pos": 1109.0,
+            "width": 64.0,
+            "height": 77.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          },
+          {
+            "room_number": "221",
+            "status": "clear",
+            "firefighters": "None",
+            "x_pos": 873.0,
+            "y_pos": 1109.0,
+            "width": 72.0,
+            "height": 77.0,
+            "shape_type": "rectangle",
+            "updated_at": "2026-03-01T10:01:44Z"
+          }
+        ]
+      }
+    ]
+  }

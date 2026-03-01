@@ -3,8 +3,8 @@ import cv2
 import numpy as np
 from datetime import datetime, timezone
 
-IMAGE_PATH = "heafey_floor1.png"
-OUT_JSON = "rooms_corrected_schema.json"
+IMAGE_PATH = "heafey_floor2copy.png"
+OUT_JSON = "rooms_corrected_schema_floor2.json"
 
 # ── Tunables ─────────────────────────────────────────────────────────────
 BLACK_THRESH = 85          # lower = stricter (only very dark pixels count as walls)
@@ -109,7 +109,7 @@ out = {
     "name": "Heafey Building",
     "floors": [
         {
-            "level": 1,
+            "level": 2,
             "rooms": rooms,
         }
     ],

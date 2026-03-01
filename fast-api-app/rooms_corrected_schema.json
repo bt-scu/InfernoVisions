@@ -5,7 +5,7 @@
       "level": 1,
       "rooms": [
         {
-          "room_number": "1",
+          "room_number": "101",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 788.0,
@@ -16,7 +16,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "2",
+          "room_number": "115",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1033.0,
@@ -27,7 +27,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "3",
+          "room_number": "114",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 957.0,
@@ -38,7 +38,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "4",
+          "room_number": "113",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1035.0,
@@ -49,7 +49,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "5",
+          "room_number": "110",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1035.0,
@@ -60,7 +60,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "6",
+          "room_number": "112",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 957.0,
@@ -71,7 +71,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "7",
+          "room_number": "111",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 955.0,
@@ -82,7 +82,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "8",
+          "room_number": "102",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 845.0,
@@ -93,7 +93,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "9",
+          "room_number": "103",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 845.0,
@@ -104,7 +104,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "10",
+          "room_number": "107",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1035.0,
@@ -115,7 +115,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "11",
+          "room_number": "104",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 845.0,
@@ -126,7 +126,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "12",
+          "room_number": "109",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 960.0,
@@ -137,7 +137,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "13",
+          "room_number": "105",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 845.0,
@@ -148,7 +148,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "14",
+          "room_number": "108",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 958.0,
@@ -159,7 +159,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "15",
+          "room_number": "106",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 843.0,
@@ -170,7 +170,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "16",
+          "room_number": "116",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 514.0,
@@ -181,7 +181,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "17",
+          "room_number": "129",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1086.0,
@@ -192,7 +192,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "18",
+          "room_number": "128",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1086.0,
@@ -203,7 +203,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "19",
+          "room_number": "117",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 514.0,
@@ -214,7 +214,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "20",
+          "room_number": "127",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1085.0,
@@ -225,7 +225,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "21",
+          "room_number": "126",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1085.0,
@@ -236,7 +236,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "22",
+          "room_number": "125",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1083.0,
@@ -247,7 +247,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "23",
+          "room_number": "122",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 953.0,
@@ -258,7 +258,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "24",
+          "room_number": "124",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1083.0,
@@ -269,7 +269,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "25",
+          "room_number": "118",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 514.0,
@@ -280,7 +280,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "26",
+          "room_number": "123",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 1085.0,
@@ -291,7 +291,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "27",
+          "room_number": "119",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 536.0,
@@ -302,7 +302,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "28",
+          "room_number": "120",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 794.0,
@@ -313,7 +313,7 @@
           "updated_at": "2026-03-01T09:00:20Z"
         },
         {
-          "room_number": "29",
+          "room_number": "121",
           "status": "clear",
           "firefighters": "None",
           "x_pos": 873.0,
