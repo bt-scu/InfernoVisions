@@ -7,7 +7,7 @@
         {
           "room_number": "101",
           "status": "clear",
-          "firefighter_name": "John Doe",
+          "firefighters": ["Jane SSSSs"],
           "x_pos": 120.5,
           "y_pos": 200.0,
           "width": 50.0,
@@ -18,7 +18,7 @@
         {
           "room_number": "102",
           "status": "active_fire",
-          "firefighter_name": "Jane Smith",
+          "firefighters": ["Jane Smith"],
           "x_pos": 400.0,
           "y_pos": 210.5,
           "width": 60.0,
@@ -34,7 +34,8 @@
         {
           "room_number": "201",
           "status": "clear",
-          "firefighter_name": "None",
+          "firefighters": ["Jane Smith"
+          ],
           "x_pos": 150.0,
           "y_pos": 450.0,
           "width": 100.0,

@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from db.create_building_from_json import create_building_from_json
 from db.get_building_state import get_building_state
 from db.update_room_status import update_room_status
+import traceback
 
 app = FastAPI()
 
@@ -38,18 +39,19 @@ async def get_db():
     async with AsyncSessionLocal() as session:
         yield session
 
+
 @app.post("/db-insert-test")
 async def test_insert_building(data: dict, db: AsyncSession = Depends(get_db)):
     try:
-        # We call the service function we wrote in the last step
         building = await create_building_from_json(db, data)
         return {
             "status": "success",
             "message": f"Building '{building['name']}' created with ID {building['id']}"
         }
     except Exception as e:
+        traceback.print_exc()  # <-- this prints file+line in container logs
         raise HTTPException(status_code=500, detail=str(e))
-
+    
 
 @app.get("/building/{building_name}")
 async def test_get_building(building_name: str, db: AsyncSession = Depends(get_db)):

@@ -24,7 +24,7 @@ async def get_building_state(db: AsyncSession, building_name: str):
     for floor in floors:
         result = await db.execute(
             text("""
-                SELECT room_number, status, firefighter_name,
+                SELECT room_number, status, firefighters,
                        x_pos, y_pos, width, height, shape_type, updated_at
                 FROM rooms
                 WHERE floor_id = :floor_id AND building_id = :building_id

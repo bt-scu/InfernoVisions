@@ -30,7 +30,7 @@ async def update_room_status(db: AsyncSession, data: dict):
                 text("""
                     UPDATE rooms SET
                         status = :status,
-                        firefighter_name = :firefighter_name,
+                        firefighters = :firefighters,
                         x_pos = :x_pos,
                         y_pos = :y_pos,
                         width = :width,
@@ -43,7 +43,7 @@ async def update_room_status(db: AsyncSession, data: dict):
                 """),
                 {
                     "status": room["status"],
-                    "firefighter_name": room["firefighter_name"],
+                    "firefighters": room["firefighters"],
                     "x_pos": room["x_pos"],
                     "y_pos": room["y_pos"],
                     "width": room["width"],

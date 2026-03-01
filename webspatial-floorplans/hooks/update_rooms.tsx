@@ -83,7 +83,7 @@ export type UpdateRoomStatusResult = { updated_rooms: number };
  * If you don't have them in UI state, fetch the room first (recommended) and pass them in.
  */
 export async function updateRoom(params: {
-  roomNumber: string; // maps to room_number in DB
+  roomNumber: string; 
   status: RoomStatus;
   firefighterName?: string;
   geometry: RoomGeometry;
