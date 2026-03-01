@@ -24,7 +24,7 @@ export function WelcomeScene() {
 
     initScene('floor2', prevConfig => ({
       ...prevConfig,
-      defaultSize: { width: 960, height: 780 },
+      defaultSize: { width: 1200, height: 900 },
     }));
     const floor2Url = new URL(window.location.href);
     floor2Url.searchParams.set('scene', 'floor2');
