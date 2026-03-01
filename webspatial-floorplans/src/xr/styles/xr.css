@@ -1880,6 +1880,52 @@ html.is-spatial .context-menu {
   flex-shrink: 0;
 }
 
+/* Floor Plan */
+.floor-plan {
+  position: relative;
+  width: 960px;
+  height: 720px;
+  flex-shrink: 0;
+  background: url('/floor-plan.png') 0 0 / 960px 720px no-repeat;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+html.is-spatial .floor-plan {
+  background-color: transparent;
+}
+
+.floor-plan-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.floor-plan-room {
+  cursor: pointer;
+}
+
+.floor-plan-room rect {
+  transition: fill-opacity 0.15s ease, fill 0.15s ease;
+}
+
+.floor-plan-room:hover rect {
+  fill-opacity: 0.55;
+  stroke: rgba(0, 0, 0, 0.3);
+}
+
+.floor-plan-label {
+  fill: #1f2937;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* Layers Scene - Standalone window */
 .layers-scene {
   width: 100%;
