@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { initScene } from '@webspatial/react-sdk';
 import '../styles/xr.css';
 import buildingIcon from '../../assets/building.png';
 import infernoLogo from '../../assets/inferno.png';
