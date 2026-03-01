@@ -11,7 +11,7 @@ interface LayersPanelProps {
 
 export function LayersPanel({ items, selectedId, dispatch, onSelectItem }: LayersPanelProps) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [filterType, setFilterType] = useState<'all' | 'image' | 'text' | 'swatch'>('all');
+  const [filterType, setFilterType] = useState<'all' | 'image' | 'text' | 'room'>('all');
   const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
   const [dragOverItemId, setDragOverItemId] = useState<string | null>(null);
   const dragStartIndex = useRef<number>(-1);
@@ -24,7 +24,7 @@ export function LayersPanel({ items, selectedId, dispatch, onSelectItem }: Layer
       item.text?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    const matchesType = filterType === 'all' || item.kind === filterType;
+    const matchesType = filterType === 'all' || item.kind === filterType || (filterType === 'room' && item.kind === 'swatch');
 
     return matchesSearch && matchesType;
   });
@@ -39,7 +39,7 @@ export function LayersPanel({ items, selectedId, dispatch, onSelectItem }: Layer
     switch (kind) {
       case 'image': return '🖼';
       case 'text': return 'T';
-      case 'swatch': return '◼';
+      case 'room': return '◼';
       default: return '•';
     }
   };
@@ -54,7 +54,7 @@ export function LayersPanel({ items, selectedId, dispatch, onSelectItem }: Layer
     if (item.kind === 'text' && item.text) {
       return item.text.slice(0, 30) + (item.text.length > 30 ? '...' : '');
     }
-    if (item.kind === 'swatch') {
+    if (item.kind === 'room' || item.kind === 'swatch') {
       return item.color || 'Color';
     }
     if (item.kind === 'image') {
@@ -235,7 +235,7 @@ export function LayersPanel({ items, selectedId, dispatch, onSelectItem }: Layer
       </div>
 
       <div className="layers-filters">
-        {(['all', 'image', 'text', 'swatch'] as const).map(type => (
+        {(['all', 'image', 'text', 'room'] as const).map(type => (
           <button
             key={type}
             className={`filter-btn ${filterType === type ? 'active' : ''}`}
@@ -272,7 +272,7 @@ export function LayersPanel({ items, selectedId, dispatch, onSelectItem }: Layer
                 >
                   ⋮⋮
                 </span>
-                <span className="layer-icon" style={{ color: item.kind === 'swatch' ? item.color : undefined }}>
+                <span className="layer-icon" style={{ color: (item.kind === 'room' || item.kind === 'swatch') ? item.color : undefined }}>
                   {getItemIcon(item.kind)}
                 </span>
                 <div className="layer-info">

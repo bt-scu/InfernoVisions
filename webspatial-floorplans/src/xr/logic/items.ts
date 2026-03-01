@@ -1,6 +1,6 @@
 // Data model and state management for moodboard items
 
-export type ItemKind = 'image' | 'swatch' | 'text';
+export type ItemKind = 'image' | 'room' | 'text';
 
 export interface Item {
   id: string;
@@ -13,7 +13,7 @@ export interface Item {
   scale: number;    // scale factor
   src?: string;     // for images
   text?: string;    // for text chips
-  color?: string;   // for swatches
+  color?: string;   // for rooms
   tags: string[];
   // Enhanced layer properties
   name?: string;    // custom layer name
@@ -352,8 +352,8 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
       // Calculate actual item sizes based on type
       const itemSizes = state.items.map(item => ({
         item,
-        width: item.kind === 'image' ? 200 : item.kind === 'swatch' ? 100 : 180,
-        height: item.kind === 'image' ? 150 : item.kind === 'swatch' ? 100 : 60,
+        width: item.kind === 'image' ? 200 : (item.kind === 'room' || item.kind === 'swatch') ? 85 : 180,
+        height: item.kind === 'image' ? 150 : (item.kind === 'room' || item.kind === 'swatch') ? 95 : 60,
       }));
 
       // Row-based packing algorithm
@@ -386,54 +386,125 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
   }
 }
 
-// Initial state with demo board
+// Room dimensions (hardcoded for floor plan)
+const ROOM_SWATCH_WIDTH = 85;
+const ROOM_SWATCH_HEIGHT = 95;
+const ROOM_GAP = 12;
+
+// Base colors for floor plan rooms
+const ROOM_COLOR = '#ffffff';
+const CORRIDOR_COLOR = '#e5e7eb';
+const OPEN_AREA_COLOR = '#bae6fd';
+
+// Initial state: rooms laid out in floor-plan-style grid
 export function createDemoBoard(): Item[] {
-  return [
-    // Demo images (using placeholder colors for now)
-    createItem('swatch', { x: 100, y: 100 }, {
-      color: '#FF6B6B',
-      z: 24,
-      tags: ['demo', 'color'],
-    }),
-    createItem('swatch', { x: 250, y: 120 }, {
-      color: '#4ECDC4',
-      z: 0,
-      tags: ['demo', 'color'],
-    }),
-    createItem('swatch', { x: 400, y: 100 }, {
-      color: '#45B7D1',
-      z: 48,
-      tags: ['demo', 'color'],
-    }),
+  const rooms: Item[] = [];
+  let x = 60;
+  let y = 60;
 
-    // Demo text chips
-    createItem('text', { x: 150, y: 300 }, {
-      text: 'Spatial Canvas',
-      z: 24,
-      scale: 1.1,
-      tags: ['demo', 'title'],
-    }),
-    createItem('text', { x: 400, y: 350 }, {
-      text: 'Spatial Design',
-      z: 48,
-      tags: ['demo', 'subtitle'],
-    }),
+  // Left column: rooms 101-106
+  for (let i = 101; i <= 106; i++) {
+    rooms.push(
+      createItem('room', { x, y }, {
+        color: ROOM_COLOR,
+        name: `Room ${i}`,
+        tags: ['room'],
+        rot: 0,
+      })
+    );
+    y += ROOM_SWATCH_HEIGHT + ROOM_GAP;
+  }
 
-    // More swatches
-    createItem('swatch', { x: 600, y: 150 }, {
-      color: '#95E1D3',
-      z: 24,
-      tags: ['demo', 'palette'],
+  // Top section: rooms 107, 108, 109
+  x = 220;
+  y = 60;
+  for (let i = 107; i <= 109; i++) {
+    rooms.push(
+      createItem('room', { x, y }, {
+        color: ROOM_COLOR,
+        name: `Room ${i}`,
+        tags: ['room'],
+        rot: 0,
+      })
+    );
+    x += ROOM_SWATCH_WIDTH + ROOM_GAP;
+  }
+
+  // Right column top: rooms 110-115
+  x = 520;
+  y = 60;
+  for (let i = 110; i <= 115; i++) {
+    rooms.push(
+      createItem('room', { x, y }, {
+        color: i === 114 ? CORRIDOR_COLOR : ROOM_COLOR,
+        name: i === 114 ? 'Corridor' : `Room ${i}`,
+        tags: ['room'],
+        rot: 0,
+      })
+    );
+    y += ROOM_SWATCH_HEIGHT + ROOM_GAP;
+  }
+
+  // Left-center: rooms 116-119
+  x = 60;
+  y = 480;
+  for (let i = 116; i <= 119; i++) {
+    rooms.push(
+      createItem('room', { x, y }, {
+        color: ROOM_COLOR,
+        name: `Room ${i}`,
+        tags: ['room'],
+        rot: 0,
+      })
+    );
+    x += ROOM_SWATCH_WIDTH + ROOM_GAP;
+  }
+
+  // Bottom row: rooms 120, 121, 122
+  x = 220;
+  y = 580;
+  for (let i = 120; i <= 122; i++) {
+    rooms.push(
+      createItem('room', { x, y }, {
+        color: ROOM_COLOR,
+        name: `Room ${i}`,
+        tags: ['room'],
+        rot: 0,
+      })
+    );
+    x += ROOM_SWATCH_WIDTH + ROOM_GAP;
+  }
+
+  // Right column: rooms 123-129
+  x = 700;
+  y = 300;
+  for (let i = 123; i <= 129; i++) {
+    rooms.push(
+      createItem('room', { x, y }, {
+        color: ROOM_COLOR,
+        name: `Room ${i}`,
+        tags: ['room'],
+        rot: 0,
+      })
+    );
+    y += ROOM_SWATCH_HEIGHT + ROOM_GAP;
+  }
+
+  // Open area and corridors
+  rooms.push(
+    createItem('room', { x: 220, y: 200 }, {
+      color: OPEN_AREA_COLOR,
+      name: 'Open Area',
+      tags: ['open'],
+      rot: 0,
     }),
-    createItem('swatch', { x: 750, y: 170 }, {
-      color: '#F38181',
-      z: 0,
-      tags: ['demo', 'palette'],
-    }),
-    createItem('text', { x: 650, y: 380 }, {
-      text: 'Layered Depth',
-      z: 80,
-      tags: ['demo', 'feature'],
-    }),
-  ];
+    createItem('room', { x: 160, y: 300 }, {
+      color: CORRIDOR_COLOR,
+      name: 'Corridor',
+      tags: ['corridor'],
+      rot: 0,
+    })
+  );
+
+  return rooms;
 }

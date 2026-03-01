@@ -138,8 +138,8 @@ export function PropertiesPanel({ item, dispatch }: PropertiesPanelProps) {
           </datalist>
         </div>
 
-        {/* Color (for swatches) */}
-        {item.kind === 'swatch' && (
+        {/* Color (for rooms) */}
+        {(item.kind === 'room' || item.kind === 'swatch') && (
           <div className="property-section">
             <label className="property-label">Color</label>
             <div className="color-picker-wrapper">

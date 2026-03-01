@@ -327,9 +327,9 @@ const ItemComponent = ({
         {item.kind === 'image' && item.src && (
           <img src={item.src} alt="Spatial Canvas item" className="item-image" />
         )}
-        {item.kind === 'swatch' && item.color && (
-          <div
-            className="item-swatch"
+{(item.kind === 'room' || item.kind === 'swatch') && item.color && (
+            <div
+            className="item-room"
             style={{ background: item.color }}
           />
         )}
