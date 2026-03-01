@@ -2921,6 +2921,8 @@ html.is-spatial .welcome-scene {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 14px;
   text-align: left;
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.2);
+
 }
 
 .welcome-panel-icon {
@@ -2938,13 +2940,13 @@ html.is-spatial .welcome-scene {
 }
 
 .welcome-panel-text strong {
-  font-size: clamp(14px, 3vw, 18px);
+  font-size: clamp(20px, 5vw, 24px);
   font-weight: 600;
   color: #B82424;
 }
 
 .welcome-panel-text span {
-  font-size: clamp(12px, 2.5vw, 14px);
+  font-size: clamp(18px, 4vw, 20px);
   opacity: 0.75;
   color: #B82424;
 }
@@ -2956,7 +2958,7 @@ html.is-spatial .welcome-scene {
   color: #B82424;
   border: none;
   border-radius: 14px;
-  font-size: clamp(15px, 3vw, 18px);
+  font-size: clamp(21px, 5vw, 24px);
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
