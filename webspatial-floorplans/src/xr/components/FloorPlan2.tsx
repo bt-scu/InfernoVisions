@@ -1,9 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
+import { FLOOR_PLAN_2_ROOMS, FLOOR_PLAN_2_WIDTH, FLOOR_PLAN_2_HEIGHT } from '../data/floorPlanRooms2';
 
 type RoomState = 'default' | 'green' | 'red';
-
-const FLOOR_PLAN_WIDTH = 960;
-const FLOOR_PLAN_HEIGHT = 720;
 
 const STORAGE_KEY = 'floor-plan-2-room-states';
 
@@ -40,7 +38,7 @@ export function FloorPlan2() {
     saveRoomStates(roomStates);
   }, [roomStates]);
 
-  const _handleRoomClick = useCallback((roomId: string) => {
+  const handleRoomClick = useCallback((roomId: string) => {
     setRoomStates(prev => {
       const current = prev[roomId] ?? 'default';
       const next = STATE_CYCLE[current];
@@ -55,10 +53,39 @@ export function FloorPlan2() {
   return (
     <div className="floor-plan floor-plan-2">
       <svg
-        viewBox={`0 0 ${FLOOR_PLAN_WIDTH} ${FLOOR_PLAN_HEIGHT}`}
+        viewBox={`0 0 ${FLOOR_PLAN_2_WIDTH} ${FLOOR_PLAN_2_HEIGHT}`}
         className="floor-plan-svg"
       >
-        {/* Rooms will be populated once a rooms2.json is generated */}
+        {FLOOR_PLAN_2_ROOMS.map(room => {
+          const state = roomStates[room.id] ?? 'default';
+          const { fill, opacity } = ROOM_COLORS[state];
+          return (
+            <g key={room.id} onClick={() => handleRoomClick(room.id)} className="floor-plan-room">
+              <rect
+                x={room.x}
+                y={room.y}
+                width={room.width}
+                height={room.height}
+                fill={fill}
+                fillOpacity={opacity}
+                stroke="rgba(0,0,0,0.15)"
+                strokeWidth={1}
+                rx={4}
+                ry={4}
+              />
+              <text
+                x={room.x + room.width / 2}
+                y={room.y + room.height / 2}
+                textAnchor="middle"
+                dominantBaseline="central"
+                className="floor-plan-label"
+                fontSize={room.width < 60 || room.height < 50 ? 10 : 13}
+              >
+                {room.label}
+              </text>
+            </g>
+          );
+        })}
       </svg>
     </div>
   );

@@ -1,13 +1,16 @@
 /**
  * Room positions and sizes for floor-plan.png (960x720).
- * Data is sourced from rooms.json (detected room geometry) and
- * scaled from the source image dimensions to the display canvas.
+ * Data is sourced from rooms_corrected_schema.json and scaled
+ * from the source image dimensions (1668x1251) to the display canvas.
  */
 
-import roomsData from '../../../../fast-api-app/rooms.json';
+import buildingData from '../../../../fast-api-app/rooms_corrected_schema.json';
 
 export const FLOOR_PLAN_WIDTH = 960;
 export const FLOOR_PLAN_HEIGHT = 720;
+
+const SRC_W = 1668;
+const SRC_H = 1251;
 
 export interface RoomDef {
   id: string;
@@ -19,14 +22,14 @@ export interface RoomDef {
   baseColor: string;
 }
 
-const [srcW, srcH] = roomsData.meta.image_size_px;
+const floor1 = buildingData.floors.find(f => f.level === 1);
 
-export const FLOOR_PLAN_ROOMS: RoomDef[] = roomsData.rooms.map(r => ({
-  id: String(r.id),
-  label: `1${String(r.id).padStart(2, '0')}`,
-  x: Math.round(r.x * FLOOR_PLAN_WIDTH / srcW),
-  y: Math.round(r.y * FLOOR_PLAN_HEIGHT / srcH),
-  width: Math.round(r.width * FLOOR_PLAN_WIDTH / srcW),
-  height: Math.round(r.height * FLOOR_PLAN_HEIGHT / srcH),
+export const FLOOR_PLAN_ROOMS: RoomDef[] = (floor1?.rooms ?? []).map(r => ({
+  id: r.room_number,
+  label: r.room_number,
+  x: Math.round(r.x_pos * FLOOR_PLAN_WIDTH / SRC_W),
+  y: Math.round(r.y_pos * FLOOR_PLAN_HEIGHT / SRC_H),
+  width: Math.round(r.width * FLOOR_PLAN_WIDTH / SRC_W),
+  height: Math.round(r.height * FLOOR_PLAN_HEIGHT / SRC_H),
   baseColor: '#ffffff',
 }));
