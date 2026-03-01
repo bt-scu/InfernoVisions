@@ -44,7 +44,7 @@ export function GridAlignScene() {
   // Count items by type
   const imageCount = items.filter(i => i.kind === 'image').length;
   const textCount = items.filter(i => i.kind === 'text').length;
-  const swatchCount = items.filter(i => i.kind === 'swatch').length;
+  const roomCount = items.filter(i => i.kind === 'room' || i.kind === 'swatch').length;
 
   return (
     <div className="grid-align-scene">
@@ -80,10 +80,10 @@ export function GridAlignScene() {
                   <span>{textCount} text item{textCount !== 1 ? 's' : ''}</span>
                 </div>
               )}
-              {swatchCount > 0 && (
+              {roomCount > 0 && (
                 <div className="grid-align-scene-item-type">
                   <span className="grid-align-scene-item-icon">🎨</span>
-                  <span>{swatchCount} swatch{swatchCount !== 1 ? 'es' : ''}</span>
+                  <span>{roomCount} room{roomCount !== 1 ? 's' : ''}</span>
                 </div>
               )}
             </div>

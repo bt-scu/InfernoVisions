@@ -109,7 +109,7 @@ export function HelpScene() {
               </div>
               <div className="help-item">
                 <span className="help-icon">◼</span>
-                <span>Add color swatch</span>
+                <span>Add room</span>
               </div>
               <div className="help-item">
                 <span className="help-icon">↑</span>

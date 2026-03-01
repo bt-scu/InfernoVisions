@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react';
 
 interface ToolbarProps {
   onAddText: () => void;
-  onAddSwatch: (color: string) => void;
+  onAddRoom: (color: string) => void;
   onAddImage: (file: File) => void;
   onAlignGrid: () => void;
   onTogglePresent: () => void;
@@ -31,7 +31,7 @@ export interface ToolbarRef {
 
 export const Toolbar = forwardRef<ToolbarRef, ToolbarProps>(function Toolbar({
   onAddText,
-  onAddSwatch,
+  onAddRoom,
   onAddImage,
   onAlignGrid,
   onTogglePresent,
@@ -229,8 +229,8 @@ export const Toolbar = forwardRef<ToolbarRef, ToolbarProps>(function Toolbar({
 
         <button
           className="toolbar-button toolbar-button-primary"
-          onClick={(e) => { e.currentTarget.blur(); onAddSwatch?.('#6366f1'); }}
-          title="Add color swatch"
+          onClick={(e) => { e.currentTarget.blur(); onAddRoom?.('#6366f1'); }}
+          title="Add room"
         >
           <span className="toolbar-icon">🎨</span>
         </button>

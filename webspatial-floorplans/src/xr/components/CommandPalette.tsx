@@ -15,7 +15,7 @@ interface CommandPaletteProps {
   onClose: () => void;
   dispatch: React.Dispatch<BoardAction>;
   onAddText: () => void;
-  onAddSwatch: (color: string) => void;
+  onAddRoom: (color: string) => void;
   onAlignGrid: () => void;
   onTogglePresent: () => void;
   onExport: () => void;
@@ -29,7 +29,7 @@ export function CommandPalette({
   onClose,
   dispatch: _dispatch,
   onAddText,
-  onAddSwatch,
+  onAddRoom,
   onAlignGrid,
   onTogglePresent,
   onExport,
@@ -56,13 +56,13 @@ export function CommandPalette({
     {
       id: 'add-color',
       label: 'Add Color',
-      description: 'Create a color swatch',
+      description: 'Create a room',
       icon: '◼',
       action: () => {
-        onAddSwatch('#6366f1');
+        onAddRoom('#6366f1');
         onClose();
       },
-      keywords: ['color', 'swatch', 'palette'],
+      keywords: ['color', 'room', 'palette'],
     },
     {
       id: 'align-grid',

@@ -4,7 +4,7 @@ html {
 }
 
 html.is-spatial {
-  background-color: transparent;
+  background-color: #F2EDE1;
   --xr-background-material: translucent;
 }
 
@@ -62,19 +62,19 @@ html.is-spatial .right-sidebar {
   overflow: visible;
 }
 
-/* Board container lives in 2D flow but hosts spatial children */
+/* Board container - fixed size to match floor plan (960x720) for 1:1 coordinate mapping */
 .board {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 600px;
+  width: 960px;
+  height: 720px;
   overflow: visible;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 60px;
+  background: url('/floor-plan.png') 0 0 / 960px 720px no-repeat;
+  background-color: #0f0f0f;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 html.is-spatial .board {
-  background: transparent;
+  background-color: transparent;
 }
 
 /* Placement mode */
@@ -185,18 +185,19 @@ html.is-spatial .drag-ghost {
   object-fit: cover;
 }
 
-.item-swatch {
-  width: 120px;
-  height: 120px;
+.item-room {
+  /* width/height set inline from item.width, item.height */
+  min-width: 40px;
+  min-height: 40px;
   border-radius: 8px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.15);
 }
 
 .item-text {
   padding: 16px 24px;
   font-size: 16px;
   font-weight: 500;
-  color: #1f2937;
+  color: #B82424;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.9);
   max-width: 300px;
@@ -232,7 +233,7 @@ html.is-spatial .item-text {
 .item-handle::after {
   content: '⋮⋮';
   font-size: 16px;
-  color: rgba(99, 102, 241, 0.6);
+  color: rgba(184, 36, 36, 0.6);
   letter-spacing: 3px;
 }
 
@@ -372,7 +373,7 @@ html.is-spatial .toolbar {
   height: 40px;
   padding: 0;
   background: rgba(0, 0, 0, 0.03);
-  color: #374151;
+  color: #B82424;
   border: none;
   border-radius: 10px;
   font-size: 11px;
@@ -415,12 +416,12 @@ html.is-spatial .toolbar {
 
 .toolbar-button-secondary {
   background: rgba(107, 114, 128, 0.08);
-  color: #6b7280;
+  color: #B82424;
 }
 
 .toolbar-button-secondary:hover:not(:disabled) {
   background: rgba(107, 114, 128, 0.15);
-  color: #374151;
+  color: #B82424;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -513,7 +514,7 @@ html.is-spatial .depth-slider-container {
 .depth-slider-label {
   font-size: 13px;
   font-weight: 700;
-  color: #1f2937;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -617,14 +618,14 @@ html.is-spatial .depth-slider-container {
 .depth-value-number {
   font-size: 24px;
   font-weight: 700;
-  color: #6366f1;
+  color: #B82424;
   line-height: 1;
 }
 
 .depth-value-label {
   font-size: 11px;
   font-weight: 600;
-  color: #6b7280;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -635,7 +636,7 @@ html.is-spatial .depth-slider-container {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   text-align: center;
   font-size: 11px;
-  color: #9ca3af;
+  color: #B82424;
   display: flex;
   gap: 6px;
   align-items: center;
@@ -798,14 +799,14 @@ html.is-spatial .palette-scene {
   font-size: 16px;
   font-weight: 700;
   margin: 0;
-  color: #1f2937;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .layers-count {
   background: rgba(99, 102, 241, 0.1);
-  color: #6366f1;
+  color: #B82424;
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 12px;
@@ -824,14 +825,14 @@ html.is-spatial .palette-scene {
 
 .layers-hint-icon {
   font-size: 14px;
-  color: #6366f1;
+  color: #B82424;
   line-height: 1;
 }
 
 .layers-hint-text {
   font-size: 11px;
   font-weight: 600;
-  color: #6366f1;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -853,7 +854,7 @@ html.is-spatial .palette-scene {
 }
 
 .layers-search-input:focus {
-  border-color: #6366f1;
+  border-color: #B82424;
   background: white;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
@@ -876,7 +877,7 @@ html.is-spatial .palette-scene {
   text-transform: capitalize;
   cursor: pointer;
   transition: all 0.2s;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .filter-btn:hover {
@@ -909,7 +910,7 @@ html.is-spatial .palette-scene {
 .layers-empty {
   text-align: center;
   padding: 40px 20px;
-  color: #9ca3af;
+  color: #B82424;
 }
 
 .layers-empty p {
@@ -945,7 +946,7 @@ html.is-spatial .palette-scene {
 
 .layer-item.selected {
   background: rgba(99, 102, 241, 0.1);
-  border-color: #6366f1;
+  border-color: #B82424;
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
 }
 
@@ -973,7 +974,7 @@ html.is-spatial .palette-scene {
 
 .layer-drag-handle {
   font-size: 16px;
-  color: #9ca3af;
+  color: #B82424;
   cursor: grab;
   user-select: none;
   opacity: 0.6;
@@ -987,7 +988,7 @@ html.is-spatial .palette-scene {
 
 .layer-drag-handle:hover {
   opacity: 1;
-  color: #6366f1;
+  color: #B82424;
   background: rgba(99, 102, 241, 0.1);
   transform: scale(1.15);
 }
@@ -1020,7 +1021,7 @@ html.is-spatial .palette-scene {
 .layer-label {
   font-size: 13px;
   font-weight: 600;
-  color: #1f2937;
+  color: #B82424;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1028,7 +1029,7 @@ html.is-spatial .palette-scene {
 
 .layer-meta {
   font-size: 11px;
-  color: #6b7280;
+  color: #B82424;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1067,7 +1068,7 @@ html.is-spatial .palette-scene {
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
-  color: #6b7280;
+  color: #B82424;
   transition: all 0.2s;
   flex-shrink: 0;
   pointer-events: auto;
@@ -1077,7 +1078,7 @@ html.is-spatial .palette-scene {
 
 .layer-action-btn:hover {
   background: rgba(0, 0, 0, 0.08);
-  color: #1f2937;
+  color: #B82424;
   transform: scale(1.05);
 }
 
@@ -1088,40 +1089,40 @@ html.is-spatial .palette-scene {
 
 .layer-action-btn.danger:hover {
   background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
+  color: #B82424;
   transform: scale(1.05);
 }
 
 .layer-action-btn.active {
   background: rgba(99, 102, 241, 0.1);
-  color: #6366f1;
+  color: #B82424;
 }
 
 .layer-action-btn.active:hover {
   background: rgba(99, 102, 241, 0.2);
-  color: #4f46e5;
+  color: #B82424;
 }
 
 /* Visibility toggle - hidden state with orange/red accent */
 .layer-action-btn.visibility-toggle.hidden {
   background: rgba(249, 115, 22, 0.1);
-  color: #f97316;
+  color: #B82424;
 }
 
 .layer-action-btn.visibility-toggle.hidden:hover {
   background: rgba(249, 115, 22, 0.2);
-  color: #ea580c;
+  color: #B82424;
 }
 
 /* Lock toggle - locked state with yellow/amber accent */
 .layer-action-btn.lock-toggle.locked {
   background: rgba(251, 191, 36, 0.15);
-  color: #f59e0b;
+  color: #B82424;
 }
 
 .layer-action-btn.lock-toggle.locked:hover {
   background: rgba(251, 191, 36, 0.25);
-  color: #d97706;
+  color: #B82424;
 }
 
 /* Layer name inline editing */
@@ -1133,7 +1134,7 @@ html.is-spatial .palette-scene {
   background: white;
   font-size: 13px;
   font-weight: 500;
-  color: #1f2937;
+  color: #B82424;
   outline: none;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
   font-family: inherit;
@@ -1146,7 +1147,7 @@ html.is-spatial .palette-scene {
 
 .layer-item.invisible .layer-label {
   text-decoration: line-through;
-  color: #9ca3af;
+  color: #B82424;
 }
 
 .layer-item.invisible .layer-icon {
@@ -1221,7 +1222,7 @@ html.is-spatial .palette-scene {
   border-radius: 8px;
   font-size: 14px;
   font-family: inherit;
-  color: #1f2937;
+  color: #B82424;
   outline: none;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
@@ -1251,14 +1252,14 @@ html.is-spatial .palette-scene {
   font-size: 16px;
   font-weight: 700;
   margin: 0;
-  color: #1f2937;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .item-type-badge {
   background: rgba(99, 102, 241, 0.1);
-  color: #6366f1;
+  color: #B82424;
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 11px;
@@ -1289,7 +1290,7 @@ html.is-spatial .palette-scene {
   height: 100%;
   padding: 40px 20px;
   text-align: center;
-  color: #9ca3af;
+  color: #B82424;
 }
 
 .empty-icon {
@@ -1301,7 +1302,7 @@ html.is-spatial .palette-scene {
   margin: 0 0 8px 0;
   font-size: 16px;
   font-weight: 600;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .properties-empty p {
@@ -1317,7 +1318,7 @@ html.is-spatial .palette-scene {
   display: block;
   font-size: 12px;
   font-weight: 600;
-  color: #6b7280;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
@@ -1338,7 +1339,7 @@ html.is-spatial .palette-scene {
 .property-input-group label {
   font-size: 11px;
   font-weight: 600;
-  color: #9ca3af;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
@@ -1356,7 +1357,7 @@ html.is-spatial .palette-scene {
 }
 
 .property-input:focus {
-  border-color: #6366f1;
+  border-color: #B82424;
   background: white;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
@@ -1377,7 +1378,7 @@ html.is-spatial .palette-scene {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .depth-btn:hover {
@@ -1470,7 +1471,7 @@ html.is-spatial .palette-scene {
 }
 
 .color-text-input:focus {
-  border-color: #6366f1;
+  border-color: #B82424;
   background: white;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
@@ -1489,7 +1490,7 @@ html.is-spatial .palette-scene {
 }
 
 .text-content-input:focus {
-  border-color: #6366f1;
+  border-color: #B82424;
   background: white;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
@@ -1504,13 +1505,13 @@ html.is-spatial .palette-scene {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .layer-order-btn:hover {
   background: rgba(99, 102, 241, 0.1);
   border-color: rgba(99, 102, 241, 0.3);
-  color: #6366f1;
+  color: #B82424;
 }
 
 .depth-slider-wrapper {
@@ -1581,7 +1582,7 @@ html.is-spatial .command-palette {
 
 .command-search-icon {
   font-size: 20px;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .command-search-input {
@@ -1590,12 +1591,12 @@ html.is-spatial .command-palette {
   background: transparent;
   font-size: 16px;
   outline: none;
-  color: #1f2937;
+  color: #B82424;
   font-weight: 500;
 }
 
 .command-search-input::placeholder {
-  color: #9ca3af;
+  color: #B82424;
 }
 
 .command-list {
@@ -1616,7 +1617,7 @@ html.is-spatial .command-palette {
 .command-empty {
   text-align: center;
   padding: 40px 20px;
-  color: #9ca3af;
+  color: #B82424;
 }
 
 .command-empty p {
@@ -1674,12 +1675,12 @@ html.is-spatial .command-palette {
 .command-label {
   font-size: 14px;
   font-weight: 600;
-  color: #1f2937;
+  color: #B82424;
 }
 
 .command-description {
   font-size: 12px;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .command-footer {
@@ -1693,7 +1694,7 @@ html.is-spatial .command-palette {
   gap: 12px;
   align-items: center;
   font-size: 11px;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .command-hint kbd {
@@ -1747,7 +1748,7 @@ html.is-spatial .context-menu {
   cursor: pointer;
   transition: all 0.15s;
   text-align: left;
-  color: #1f2937;
+  color: #B82424;
   font-size: 13px;
   font-weight: 500;
 }
@@ -1798,7 +1799,7 @@ html.is-spatial .context-menu {
   font-size: 12px;
   font-weight: 700;
   margin: 0;
-  color: #1f2937;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -1847,7 +1848,7 @@ html.is-spatial .context-menu {
 
 .minimap-legend-icon {
   font-size: 14px;
-  color: #6366f1;
+  color: #B82424;
   font-weight: 600;
   line-height: 1;
 }
@@ -1855,24 +1856,74 @@ html.is-spatial .context-menu {
 .minimap-legend-item span {
   font-size: 11px;
   font-weight: 700;
-  color: #6b7280;
+  color: #B82424;
   min-width: 12px;
   text-align: center;
 }
 
 /* ===== Multi-Window Scene Layouts ===== */
 
-/* Board Scene - Full screen canvas */
+/* Board Scene - centers the 960x720 floor plan board */
 .board-scene-container {
   width: 100%;
   height: 100vh;
-  overflow: visible;
+  overflow: auto;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .board-scene-container .board {
+  width: 960px;
+  height: 720px;
+  flex-shrink: 0;
+}
+
+/* Floor Plan */
+.floor-plan {
+  position: relative;
+  width: 960px;
+  height: 720px;
+  flex-shrink: 0;
+  background: url('/floor-plan.png') 0 0 / 960px 720px no-repeat;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+html.is-spatial .floor-plan {
+  background-color: transparent;
+}
+
+.floor-plan-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+}
+
+.floor-plan-room {
+  cursor: pointer;
+}
+
+.floor-plan-room rect {
+  transition: fill-opacity 0.15s ease, fill 0.15s ease;
+}
+
+.floor-plan-room:hover rect {
+  fill-opacity: 0.55;
+  stroke: rgba(0, 0, 0, 0.3);
+}
+
+.floor-plan-label {
+  fill: #1f2937;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Layers Scene - Standalone window */
@@ -1959,7 +2010,7 @@ html.is-spatial .help-scene {
   margin: 0;
   font-size: 28px;
   font-weight: 800;
-  color: #1f2937;
+  color: #B82424;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1970,7 +2021,7 @@ html.is-spatial .help-scene {
   margin: 4px 0 0 0;
   font-size: 13px;
   font-weight: 600;
-  color: #6b7280;
+  color: #B82424;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -2006,7 +2057,7 @@ html.is-spatial .help-scene {
   margin: 0 0 14px 0;
   font-size: 16px;
   font-weight: 700;
-  color: #1f2937;
+  color: #B82424;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -2051,7 +2102,7 @@ html.is-spatial .help-item {
   font-size: 11px;
   font-weight: 700;
   font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
-  color: #374151;
+  color: #B82424;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
 }
@@ -2059,20 +2110,20 @@ html.is-spatial .help-item {
 .help-item strong {
   font-size: 13px;
   font-weight: 700;
-  color: #1f2937;
+  color: #B82424;
   min-width: 140px;
 }
 
 .help-item span {
   font-size: 13px;
-  color: #6b7280;
+  color: #B82424;
   flex: 1;
   text-align: right;
 }
 
 .help-text {
   font-weight: 600;
-  color: #6366f1;
+  color: #B82424;
   background: none;
   padding: 0;
   border: none;
@@ -2108,11 +2159,11 @@ html.is-spatial .help-item {
   margin: 0;
   font-size: 13px;
   line-height: 1.6;
-  color: #4b5563;
+  color: #B82424;
 }
 
 .help-tips p strong {
-  color: #1f2937;
+  color: #B82424;
   font-weight: 600;
 }
 
@@ -2143,7 +2194,7 @@ html.is-spatial .export-scene {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
-  color: #1f2937;
+  color: #B82424;
 }
 
 .export-scene-close {
@@ -2156,14 +2207,14 @@ html.is-spatial .export-scene {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   font-size: 24px;
-  color: #6b7280;
+  color: #B82424;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .export-scene-close:hover {
   background: rgba(0, 0, 0, 0.1);
-  color: #1f2937;
+  color: #B82424;
 }
 
 .export-scene-content {
@@ -2185,12 +2236,12 @@ html.is-spatial .export-scene {
   line-height: 1.5;
   resize: none;
   background: rgba(255, 255, 255, 0.8);
-  color: #374151;
+  color: #B82424;
 }
 
 .export-scene-textarea:focus {
   outline: none;
-  border-color: #6366f1;
+  border-color: #B82424;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
@@ -2226,7 +2277,7 @@ html.is-spatial .export-scene {
 
 .export-scene-button-secondary {
   background: rgba(0, 0, 0, 0.05);
-  color: #374151;
+  color: #B82424;
 }
 
 .export-scene-button-secondary:hover {
@@ -2237,7 +2288,7 @@ html.is-spatial .export-scene {
   margin: 0;
   padding: 12px 20px 16px;
   font-size: 13px;
-  color: #1f2937;
+  color: #B82424;
   text-align: center;
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.6);
@@ -2247,7 +2298,7 @@ html.is-spatial .export-scene {
 
 html.is-spatial .export-scene-hint {
   background: rgba(255, 255, 255, 0.3);
-  color: #1f2937;
+  color: #B82424;
 }
 
 /* ===== Import Scene ===== */
@@ -2277,7 +2328,7 @@ html.is-spatial .import-scene {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
-  color: #1f2937;
+  color: #B82424;
 }
 
 .import-scene-close {
@@ -2290,14 +2341,14 @@ html.is-spatial .import-scene {
   background: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   font-size: 24px;
-  color: #6b7280;
+  color: #B82424;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .import-scene-close:hover {
   background: rgba(0, 0, 0, 0.1);
-  color: #1f2937;
+  color: #B82424;
 }
 
 .import-scene-file-section {
@@ -2325,7 +2376,7 @@ html.is-spatial .import-scene {
 
 .import-scene-or {
   font-size: 12px;
-  color: #6b7280;
+  color: #B82424;
   font-weight: 500;
 }
 
@@ -2348,22 +2399,22 @@ html.is-spatial .import-scene {
   line-height: 1.5;
   resize: none;
   background: rgba(255, 255, 255, 0.8);
-  color: #374151;
+  color: #B82424;
 }
 
 .import-scene-textarea:focus {
   outline: none;
-  border-color: #6366f1;
+  border-color: #B82424;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
 .import-scene-textarea.has-error {
-  border-color: #ef4444;
+  border-color: #B82424;
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .import-scene-textarea::placeholder {
-  color: #9ca3af;
+  color: #B82424;
 }
 
 .import-scene-error {
@@ -2372,7 +2423,7 @@ html.is-spatial .import-scene {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
   border-radius: 8px;
-  color: #dc2626;
+  color: #B82424;
   font-size: 13px;
   font-weight: 500;
 }
@@ -2414,7 +2465,7 @@ html.is-spatial .import-scene {
 
 .import-scene-button-secondary {
   background: rgba(0, 0, 0, 0.05);
-  color: #374151;
+  color: #B82424;
 }
 
 .import-scene-button-secondary:hover:not(:disabled) {
@@ -2425,7 +2476,7 @@ html.is-spatial .import-scene {
   margin: 0;
   padding: 12px 20px 16px;
   font-size: 13px;
-  color: #1f2937;
+  color: #B82424;
   text-align: center;
   flex-shrink: 0;
   background: rgba(255, 255, 255, 0.6);
@@ -2435,7 +2486,7 @@ html.is-spatial .import-scene {
 
 html.is-spatial .import-scene-hint {
   background: rgba(255, 255, 255, 0.3);
-  color: #1f2937;
+  color: #B82424;
 }
 
 /* ===== Onboarding: Welcome Popup ===== */
@@ -2445,7 +2496,7 @@ html.is-spatial .import-scene-hint {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -2462,7 +2513,7 @@ html.is-spatial .import-scene-hint {
 .welcome-popup {
   width: 420px;
   max-width: 90vw;
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 24px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -2478,7 +2529,7 @@ html.is-spatial .import-scene-hint {
 }
 
 html.is-spatial .welcome-popup {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(40px);
 }
 
@@ -2500,7 +2551,7 @@ html.is-spatial .welcome-popup {
   margin: 8px 0 0;
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(184, 36, 36, 0.85);
 }
 
 .welcome-popup-content {
@@ -2510,7 +2561,7 @@ html.is-spatial .welcome-popup {
 .welcome-popup-intro {
   margin: 0 0 20px;
   font-size: 14px;
-  color: #6b7280;
+  color: #B82424;
   text-align: center;
 }
 
@@ -2558,12 +2609,12 @@ html.is-spatial .welcome-popup {
 .welcome-popup-feature-info strong {
   font-size: 15px;
   font-weight: 700;
-  color: #1f2937;
+  color: #B82424;
 }
 
 .welcome-popup-feature-info span {
   font-size: 13px;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .welcome-popup-footer {
@@ -2586,13 +2637,13 @@ html.is-spatial .welcome-popup {
 .welcome-popup-checkbox input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: #6366f1;
+  accent-color: #B82424;
   cursor: pointer;
 }
 
 .welcome-popup-checkbox span {
   font-size: 13px;
-  color: #6b7280;
+  color: #B82424;
 }
 
 .welcome-popup-button {
@@ -2883,17 +2934,19 @@ html.is-spatial .welcome-scene {
 
 .welcome-title {
   margin: 0 0 12px 0;
-  font-size: clamp(20px, 5vw, 28px);
+  font-size: clamp(32px, 8vw, 40px);
   font-weight: 700;
   text-align: center;
+  color: #B82424;
 }
 
 .welcome-subtitle {
   margin: 0 0 24px 0;
-  font-size: clamp(13px, 3vw, 16px);
+  font-size: clamp(19px, 5vw, 22px);
   opacity: 0.85;
   line-height: 1.5;
   text-align: center;
+  color: #B82424;
 }
 
 .welcome-panels {
@@ -2914,6 +2967,8 @@ html.is-spatial .welcome-scene {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 14px;
   text-align: left;
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.2);
+
 }
 
 .welcome-panel-icon {
@@ -2927,26 +2982,29 @@ html.is-spatial .welcome-scene {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  color: #B82424;
 }
 
 .welcome-panel-text strong {
-  font-size: clamp(14px, 3vw, 18px);
+  font-size: clamp(20px, 5vw, 24px);
   font-weight: 600;
+  color: #B82424;
 }
 
 .welcome-panel-text span {
-  font-size: clamp(12px, 2.5vw, 14px);
+  font-size: clamp(18px, 4vw, 20px);
   opacity: 0.75;
+  color: #B82424;
 }
 
 .welcome-dismiss-btn {
   width: 100%;
   padding: 16px 24px;
-  background: rgba(255, 255, 255, 0.95);
-  color: #6366f1;
+  background: white;
+  color: #B82424;
   border: none;
   border-radius: 14px;
-  font-size: clamp(15px, 3vw, 18px);
+  font-size: clamp(21px, 5vw, 24px);
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
@@ -2954,7 +3012,8 @@ html.is-spatial .welcome-scene {
 }
 
 .welcome-dismiss-btn:hover {
-  background: white;
+  background: #FFE7E7;
+  color: #B82424;
   transform: scale(1.02);
 }
 
@@ -2988,7 +3047,7 @@ html.is-spatial .clear-scene-header {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
-  color: #1e293b;
+  color: #B82424;
 }
 
 html.is-spatial .clear-scene-title {
@@ -3002,7 +3061,7 @@ html.is-spatial .clear-scene-title {
   background: rgba(0, 0, 0, 0.06);
   border-radius: 50%;
   font-size: 20px;
-  color: #64748b;
+  color: #B82424;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -3037,7 +3096,7 @@ html.is-spatial .clear-scene-close:hover {
   margin: 0 0 8px 0;
   font-size: 16px;
   font-weight: 500;
-  color: #1e293b;
+  color: #B82424;
 }
 
 html.is-spatial .clear-scene-message {
@@ -3047,11 +3106,11 @@ html.is-spatial .clear-scene-message {
 .clear-scene-submessage {
   margin: 0;
   font-size: 14px;
-  color: #64748b;
+  color: #B82424;
 }
 
 html.is-spatial .clear-scene-submessage {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(184, 36, 36, 0.7);
 }
 
 .clear-scene-success {
@@ -3077,11 +3136,11 @@ html.is-spatial .clear-scene-submessage {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: #10b981;
+  color: #B82424;
 }
 
 html.is-spatial .clear-scene-success p {
-  color: #34d399;
+  color: #B82424;
 }
 
 .clear-scene-actions {
@@ -3133,7 +3192,7 @@ html.is-spatial .clear-scene-actions {
 
 .clear-scene-btn-secondary {
   background: rgba(0, 0, 0, 0.08);
-  color: #64748b;
+  color: #B82424;
 }
 
 html.is-spatial .clear-scene-btn-secondary {
@@ -3179,7 +3238,7 @@ html.is-spatial .grid-align-scene-header {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
-  color: #1e293b;
+  color: #B82424;
 }
 
 html.is-spatial .grid-align-scene-title {
@@ -3193,7 +3252,7 @@ html.is-spatial .grid-align-scene-title {
   background: rgba(0, 0, 0, 0.06);
   border-radius: 50%;
   font-size: 20px;
-  color: #64748b;
+  color: #B82424;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -3228,7 +3287,7 @@ html.is-spatial .grid-align-scene-close:hover {
   margin: 0 0 16px 0;
   font-size: 16px;
   font-weight: 500;
-  color: #1e293b;
+  color: #B82424;
 }
 
 html.is-spatial .grid-align-scene-message {
@@ -3255,11 +3314,11 @@ html.is-spatial .grid-align-scene-breakdown {
   align-items: center;
   gap: 6px;
   font-size: 14px;
-  color: #475569;
+  color: #B82424;
 }
 
 html.is-spatial .grid-align-scene-item-type {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(184, 36, 36, 0.9);
 }
 
 .grid-align-scene-item-icon {
@@ -3269,11 +3328,11 @@ html.is-spatial .grid-align-scene-item-type {
 .grid-align-scene-warning {
   margin: 0;
   font-size: 13px;
-  color: #f59e0b;
+  color: #B82424;
 }
 
 html.is-spatial .grid-align-scene-warning {
-  color: #fbbf24;
+  color: #B82424;
 }
 
 .grid-align-scene-success {
@@ -3299,11 +3358,11 @@ html.is-spatial .grid-align-scene-warning {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: #10b981;
+  color: #B82424;
 }
 
 html.is-spatial .grid-align-scene-success p {
-  color: #34d399;
+  color: #B82424;
 }
 
 .grid-align-scene-actions {
@@ -3345,7 +3404,7 @@ html.is-spatial .grid-align-scene-actions {
 
 .grid-align-scene-btn-secondary {
   background: rgba(0, 0, 0, 0.08);
-  color: #64748b;
+  color: #B82424;
 }
 
 html.is-spatial .grid-align-scene-btn-secondary {

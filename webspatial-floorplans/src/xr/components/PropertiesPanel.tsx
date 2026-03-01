@@ -1,6 +1,6 @@
 import type { Item } from '../logic/items';
 import type { BoardAction } from '../logic/items';
-import { DEPTH_STEPS } from '../logic/items';
+import { DEPTH_STEPS, getRoomDimensions } from '../logic/items';
 
 interface PropertiesPanelProps {
   item: Item | undefined;
@@ -39,6 +39,11 @@ export function PropertiesPanel({ item, dispatch }: PropertiesPanelProps) {
 
   const handleColorChange = (color: string) => {
     dispatch({ type: 'UPDATE_ITEM', id: item.id, updates: { color } });
+  };
+
+  const handleSizeChange = (dim: 'width' | 'height', value: number) => {
+    const clamped = Math.max(40, Math.min(400, value));
+    dispatch({ type: 'UPDATE_ITEM', id: item.id, updates: { [dim]: clamped } });
   };
 
   const handleTextChange = (text: string) => {
@@ -138,8 +143,9 @@ export function PropertiesPanel({ item, dispatch }: PropertiesPanelProps) {
           </datalist>
         </div>
 
-        {/* Color (for swatches) */}
-        {item.kind === 'swatch' && (
+        {/* Color & Size (for rooms) */}
+        {(item.kind === 'room' || item.kind === 'swatch') && (
+          <>
           <div className="property-section">
             <label className="property-label">Color</label>
             <div className="color-picker-wrapper">
@@ -158,6 +164,34 @@ export function PropertiesPanel({ item, dispatch }: PropertiesPanelProps) {
               />
             </div>
           </div>
+          <div className="property-section">
+            <label className="property-label">Size</label>
+            <div className="property-row">
+              <div className="property-input-group">
+                <label>Width</label>
+                <input
+                  type="number"
+                  value={Math.round(getRoomDimensions(item).width)}
+                  onChange={(e) => handleSizeChange('width', Number(e.target.value))}
+                  className="property-input"
+                  min="40"
+                  max="400"
+                />
+              </div>
+              <div className="property-input-group">
+                <label>Height</label>
+                <input
+                  type="number"
+                  value={Math.round(getRoomDimensions(item).height)}
+                  onChange={(e) => handleSizeChange('height', Number(e.target.value))}
+                  className="property-input"
+                  min="40"
+                  max="400"
+                />
+              </div>
+            </div>
+          </div>
+          </>
         )}
 
         {/* Text (for text items) */}

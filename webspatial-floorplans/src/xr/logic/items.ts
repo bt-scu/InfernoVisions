@@ -1,6 +1,6 @@
 // Data model and state management for moodboard items
 
-export type ItemKind = 'image' | 'swatch' | 'text';
+export type ItemKind = 'image' | 'room' | 'text' | 'swatch'; // 'swatch' = legacy, treated as room
 
 export interface Item {
   id: string;
@@ -13,7 +13,9 @@ export interface Item {
   scale: number;    // scale factor
   src?: string;     // for images
   text?: string;    // for text chips
-  color?: string;   // for swatches
+  color?: string;   // for rooms
+  width?: number;   // for rooms - custom width
+  height?: number;  // for rooms - custom height
   tags: string[];
   // Enhanced layer properties
   name?: string;    // custom layer name
@@ -30,6 +32,21 @@ export interface BoardState {
 // Valid depth steps in pt
 export const DEPTH_STEPS = [0, 24, 48, 80];
 export const FOCUS_LIFT = 6; // Temporary elevation on focus
+
+// Default room dimensions (used when width/height not set)
+export const DEFAULT_ROOM_WIDTH = 85;
+export const DEFAULT_ROOM_HEIGHT = 95;
+
+/** Get dimensions for a room/swatch item */
+export function getRoomDimensions(item: Item): { width: number; height: number } {
+  if (item.kind !== 'room' && item.kind !== 'swatch') {
+    return { width: 180, height: 60 }; // text fallback
+  }
+  return {
+    width: item.width ?? DEFAULT_ROOM_WIDTH,
+    height: item.height ?? DEFAULT_ROOM_HEIGHT,
+  };
+}
 
 // Helper to snap to nearest depth step
 export function snapToDepthStep(z: number): number {
@@ -350,11 +367,14 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
       const maxWidth = 1100; // Board width minus padding
 
       // Calculate actual item sizes based on type
-      const itemSizes = state.items.map(item => ({
-        item,
-        width: item.kind === 'image' ? 200 : item.kind === 'swatch' ? 100 : 180,
-        height: item.kind === 'image' ? 150 : item.kind === 'swatch' ? 100 : 60,
-      }));
+      const itemSizes = state.items.map(item => {
+        const dims = (item.kind === 'room' || item.kind === 'swatch')
+          ? getRoomDimensions(item)
+          : item.kind === 'image'
+            ? { width: 200, height: 150 }
+            : { width: 180, height: 60 };
+        return { item, width: dims.width, height: dims.height };
+      });
 
       // Row-based packing algorithm
       let x = padding;
@@ -386,54 +406,20 @@ export function boardReducer(state: BoardState, action: BoardAction): BoardState
   }
 }
 
-// Initial state with demo board
+import { FLOOR_PLAN_ROOMS, FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT } from '../data/floorPlanRooms';
+
+// Initial state: rooms from floor plan config (positions/sizes match floor-plan.png)
 export function createDemoBoard(): Item[] {
-  return [
-    // Demo images (using placeholder colors for now)
-    createItem('swatch', { x: 100, y: 100 }, {
-      color: '#FF6B6B',
-      z: 24,
-      tags: ['demo', 'color'],
-    }),
-    createItem('swatch', { x: 250, y: 120 }, {
-      color: '#4ECDC4',
-      z: 0,
-      tags: ['demo', 'color'],
-    }),
-    createItem('swatch', { x: 400, y: 100 }, {
-      color: '#45B7D1',
-      z: 48,
-      tags: ['demo', 'color'],
-    }),
-
-    // Demo text chips
-    createItem('text', { x: 150, y: 300 }, {
-      text: 'Spatial Canvas',
-      z: 24,
-      scale: 1.1,
-      tags: ['demo', 'title'],
-    }),
-    createItem('text', { x: 400, y: 350 }, {
-      text: 'Spatial Design',
-      z: 48,
-      tags: ['demo', 'subtitle'],
-    }),
-
-    // More swatches
-    createItem('swatch', { x: 600, y: 150 }, {
-      color: '#95E1D3',
-      z: 24,
-      tags: ['demo', 'palette'],
-    }),
-    createItem('swatch', { x: 750, y: 170 }, {
-      color: '#F38181',
-      z: 0,
-      tags: ['demo', 'palette'],
-    }),
-    createItem('text', { x: 650, y: 380 }, {
-      text: 'Layered Depth',
-      z: 80,
-      tags: ['demo', 'feature'],
-    }),
-  ];
+  return FLOOR_PLAN_ROOMS.map(def =>
+    createItem('room', { x: def.x, y: def.y }, {
+      color: def.baseColor,
+      name: def.label,
+      tags: def.id.startsWith('corridor') ? ['corridor'] : def.id === 'open' ? ['open'] : ['room'],
+      rot: 0,
+      width: def.width,
+      height: def.height,
+    })
+  );
 }
+
+export { FLOOR_PLAN_WIDTH, FLOOR_PLAN_HEIGHT };

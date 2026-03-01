@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, type CSSProperties } from 'react';
 import type { Item as ItemType } from '../logic/items';
+import { getRoomDimensions } from '../logic/items';
 
 interface ItemProps {
   item: ItemType;
@@ -327,12 +328,15 @@ const ItemComponent = ({
         {item.kind === 'image' && item.src && (
           <img src={item.src} alt="Spatial Canvas item" className="item-image" />
         )}
-        {item.kind === 'swatch' && item.color && (
-          <div
-            className="item-swatch"
-            style={{ background: item.color }}
-          />
-        )}
+{(item.kind === 'room' || item.kind === 'swatch') && item.color && (() => {
+          const { width, height } = getRoomDimensions(item);
+          return (
+            <div
+              className="item-room"
+              style={{ background: item.color, width, height }}
+            />
+          );
+        })()}
         {item.kind === 'text' && (
           isEditing ? (
             <input
