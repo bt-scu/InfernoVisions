@@ -3012,8 +3012,8 @@ html.is-spatial .welcome-scene {
 }
 
 .welcome-dismiss-btn:hover {
-  background: #FFE7E7;
-  color: #B82424;
+  background: #B82424;
+  color: #FFE7E7;
   transform: scale(1.02);
 }
 
