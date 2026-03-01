@@ -22,6 +22,14 @@ export function WelcomeScene() {
     keyUrl.searchParams.set('scene', 'key');
     window.open(keyUrl.toString(), 'keyScene');
 
+    initScene('floor2', prevConfig => ({
+      ...prevConfig,
+      defaultSize: { width: 960, height: 780 },
+    }));
+    const floor2Url = new URL(window.location.href);
+    floor2Url.searchParams.set('scene', 'floor2');
+    window.open(floor2Url.toString(), 'floor2');
+
     const url = new URL(window.location.href);
     url.searchParams.set('scene', 'board');
     window.location.href = url.toString();
