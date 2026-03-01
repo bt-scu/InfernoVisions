@@ -2942,7 +2942,7 @@ html.is-spatial .welcome-scene {
 
 .welcome-subtitle {
   margin: 0 0 24px 0;
-  font-size: clamp(19px, 5vw, 22px);
+  font-size: clamp(25px, 8vw, 29px);
   opacity: 0.85;
   line-height: 1.5;
   text-align: center;
@@ -2986,7 +2986,7 @@ html.is-spatial .welcome-scene {
 }
 
 .welcome-panel-text strong {
-  font-size: clamp(20px, 5vw, 24px);
+  font-size: clamp(25px, 8vw, 28px);
   font-weight: 600;
   color: #B82424;
 }
