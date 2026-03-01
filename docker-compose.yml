@@ -1,0 +1,21 @@
+services:
+  fastapi:
+    build:
+      context: ./fast-api-app
+      dockerfile: dockerfile
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+    ports:
+      - "8000:80"
+
+  react:
+    build:
+      context: ./webspatial-floorplans
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://fastapi:80
+        VITE_BUILDING_NAME: ${BUILDING_NAME:-Heafey}
+    ports:
+      - "4173:4173"
+    depends_on:
+      - fastapi

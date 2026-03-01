@@ -1,9 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
-import { FLOOR_PLAN_2_ROOMS, FLOOR_PLAN_2_WIDTH, FLOOR_PLAN_2_HEIGHT } from '../data/floorPlanRooms2';
+import { useBuildingFloor } from '../hooks/useBuildingFloor';
+import { FLOOR_PLAN_2_WIDTH, FLOOR_PLAN_2_HEIGHT } from '../data/floorPlanRooms2';
+import type { RoomState } from '../hooks/useBuildingFloor';
 
-type RoomState = 'default' | 'green' | 'red';
-
-const STORAGE_KEY = 'floor-plan-2-room-states';
+const BUILDING_NAME = import.meta.env.VITE_BUILDING_NAME ?? 'Heafey';
 
 const ROOM_COLORS: Record<RoomState, { fill: string; opacity: number }> = {
   default: { fill: '#ffffff', opacity: 0.35 },
@@ -11,44 +10,16 @@ const ROOM_COLORS: Record<RoomState, { fill: string; opacity: number }> = {
   red:     { fill: '#ef4444', opacity: 0.5 },
 };
 
-const STATE_CYCLE: Record<RoomState, RoomState> = {
-  default: 'green',
-  green: 'red',
-  red: 'default',
-};
-
-function loadRoomStates(): Record<string, RoomState> {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch { /* ignore */ }
-  return {};
-}
-
-function saveRoomStates(states: Record<string, RoomState>) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(states));
-  } catch { /* ignore */ }
-}
-
 export function FloorPlan2() {
-  const [roomStates, setRoomStates] = useState<Record<string, RoomState>>(loadRoomStates);
+  const { rooms, roomStates, handleRoomClick, loading, error } = useBuildingFloor(BUILDING_NAME, 2);
 
-  useEffect(() => {
-    saveRoomStates(roomStates);
-  }, [roomStates]);
+  if (loading) {
+    return <div className="floor-plan floor-plan-2" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#666' }}>Loading floor 2...</div>;
+  }
 
-  const handleRoomClick = useCallback((roomId: string) => {
-    setRoomStates(prev => {
-      const current = prev[roomId] ?? 'default';
-      const next = STATE_CYCLE[current];
-      if (next === 'default') {
-        const { [roomId]: _, ...rest } = prev;
-        return rest;
-      }
-      return { ...prev, [roomId]: next };
-    });
-  }, []);
+  if (error) {
+    return <div className="floor-plan floor-plan-2" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444' }}>Error: {error}</div>;
+  }
 
   return (
     <div className="floor-plan floor-plan-2">
@@ -56,7 +27,7 @@ export function FloorPlan2() {
         viewBox={`0 0 ${FLOOR_PLAN_2_WIDTH} ${FLOOR_PLAN_2_HEIGHT}`}
         className="floor-plan-svg"
       >
-        {FLOOR_PLAN_2_ROOMS.map(room => {
+        {rooms.map(room => {
           const state = roomStates[room.id] ?? 'default';
           const { fill, opacity } = ROOM_COLORS[state];
           return (
