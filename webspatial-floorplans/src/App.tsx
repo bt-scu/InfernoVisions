@@ -50,8 +50,12 @@ function App() {
     return <GridAlignScene />;
   }
 
-  // Default to board scene (start scene)
-  return <BoardScene />;
+  if (scene === 'board') {
+    return <BoardScene />;
+  }
+
+  // Default to welcome scene on start
+  return <WelcomeScene />;
 }
 
 export default App;

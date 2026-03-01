@@ -165,46 +165,6 @@ export function BoardScene() {
     };
   }, [state.items]);
 
-  // Open welcome scene on app launch
-  useEffect(() => {
-    let hasOpened = false;
-
-    const showWelcome = () => {
-      if (!hasOpened) {
-        hasOpened = true;
-        setTimeout(() => {
-          openAuxiliaryWindow('welcome', 'welcome');
-        }, 800);
-      }
-    };
-
-    // Show on initial mount
-    showWelcome();
-
-    // Also show when page becomes visible (app reopened from background)
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible') {
-        // Reset so it can show again next time
-        hasOpened = false;
-      }
-    };
-
-    const handlePageShow = (event: PageTransitionEvent) => {
-      if (event.persisted) {
-        // Page was restored from bfcache
-        showWelcome();
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibility);
-    window.addEventListener('pageshow', handlePageShow);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibility);
-      window.removeEventListener('pageshow', handlePageShow);
-    };
-  }, [openAuxiliaryWindow]);
-
   // Undo/Redo handlers
   const handleUndo = useCallback(() => {
     dispatch({ type: 'UNDO' });

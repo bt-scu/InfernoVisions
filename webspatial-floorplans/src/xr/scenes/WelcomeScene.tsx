@@ -3,8 +3,10 @@ import '../styles/xr.css';
 
 export function WelcomeScene() {
   const handleDismiss = useCallback(() => {
-    // Close this window
-    window.close();
+    // Navigate to board
+    const url = new URL(window.location.href);
+    url.searchParams.set('scene', 'board');
+    window.location.href = url.toString();
   }, []);
 
   return (
