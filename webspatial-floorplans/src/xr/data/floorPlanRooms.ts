@@ -1,13 +1,13 @@
 /**
- * Room positions and sizes for floor-plan.png (431x672).
+ * Room positions and sizes for floor-plan.png (960x720).
  * Data is sourced from rooms.json (detected room geometry) and
  * scaled from the source image dimensions to the display canvas.
  */
 
 import roomsData from '../../../../fast-api-app/rooms.json';
 
-export const FLOOR_PLAN_WIDTH = 431;
-export const FLOOR_PLAN_HEIGHT = 672;
+export const FLOOR_PLAN_WIDTH = 960;
+export const FLOOR_PLAN_HEIGHT = 720;
 
 export interface RoomDef {
   id: string;
