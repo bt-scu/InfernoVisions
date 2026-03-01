@@ -9,6 +9,10 @@ export function WelcomeScene() {
     hubUrl.searchParams.set('scene', 'firefighter-hub');
     window.open(hubUrl.toString(), '_blank');
 
+    const keyUrl = new URL(window.location.href);
+    keyUrl.searchParams.set('scene', 'key');
+    window.open(keyUrl.toString(), '_blank');
+
     const url = new URL(window.location.href);
     url.searchParams.set('scene', 'board');
     window.location.href = url.toString();
